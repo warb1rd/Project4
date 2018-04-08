@@ -6,7 +6,7 @@ const verifyToken = require('../serverAuth.js').verifyToken;
 usersRouter.get("/", usersCtrl.index)
 usersRouter.post("/", usersCtrl.create)
 
-usersRouter.post('/authenticate', usersCtrl.authenticate)
+usersRouter.post('/login', usersCtrl.authenticate)
 
 usersRouter.use(verifyToken)                                  //Any routes declared after this will be protected
 
