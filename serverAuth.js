@@ -12,7 +12,7 @@ function verifyToken(req, res, next){
     const token = req.get("token") || req.body.token ||req.query.token              //This gets token from headers, body or query string
     
     if(!token) return res.json({success: false, message: "No token found" })        //If no token is found, deny access, else try verifying token
-    jwt.verify(token, JWT_KEY, (err, user) => {
+    jwt.verify(token, JWT_KEY, (err, decodedData) => {
         
         if(err) return res.json({success: false, message: "Invalid token" })
         User.findById(decodedData._id, (err, user) => {                             //Else, search for user by id embedded in token
