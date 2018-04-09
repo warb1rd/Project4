@@ -6,9 +6,8 @@ class NavigationBar extends Component {
   state = { visible: false }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
-
-  handleClick(){
-      
+//show visibility and by clicking anywhere on the screen it should toggle back. User shouldnt have to click on sidebar to make nav invis again
+  handleClick(){     
     console.log("clicked menu")
   }
 
@@ -18,32 +17,33 @@ class NavigationBar extends Component {
       <div>
         <Icon onClick={this.toggleVisibility} name="sidebar big"/>
         <Sidebar.Pushable as={Segment}>
-          <Sidebar as={Menu} animation='overlay' direction='top' visible={visible} inverted>
-            <Menu.Item name='home'>
-                <Icon name='home' />
-                <Link to="/">HOME</Link>
-            </Menu.Item>
-            
-            <Menu.Item name='login'>
-                <Link to="/login">LOGIN</Link>
-                <Icon name='sign in' />
-            </Menu.Item>
+            <Sidebar as={Menu} animation='overlay' direction='top' visible={visible} inverted>
+                
+                <Menu.Item name='home' onClick={this.handleClick.bind(this)}>
+                    <Icon name='home' />
+                    <Link to="/">HOME</Link>
+                </Menu.Item>
 
-            <Menu.Item name='signUp'>
-                <Link to="/signup">SIGN UP</Link>
-                <Icon name='wpforms' />      
-            </Menu.Item>
+                <Menu.Item name='login' onClick={this.handleClick.bind(this)}>
+                    <Link to="/login">LOGIN</Link>
+                    <Icon name='sign in' />
+                </Menu.Item>
 
-            <Menu.Item name='templates' onClick={this.handleClick.bind(this)}>
-                <Link to="/templates">TEMPLATES</Link>
-                <Icon name='block layout' />
-            </Menu.Item>
+                <Menu.Item name='signUp' onClick={this.handleClick.bind(this)}>
+                    <Link to="/signup">SIGN UP</Link>
+                    <Icon name='wpforms' />      
+                </Menu.Item>
 
-          </Sidebar>
-          <Sidebar.Pusher>
-            <Segment basic>
-              <Header as='h3'></Header>
-            </Segment>
+                <Menu.Item name='templates' onClick={this.handleClick.bind(this)}>
+                    <Link to="/templates">TEMPLATES</Link>
+                    <Icon name='block layout' />
+                </Menu.Item>
+
+            </Sidebar>
+            <Sidebar.Pusher>
+                <Segment basic>
+                    <Header as='h3'></Header>
+                </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

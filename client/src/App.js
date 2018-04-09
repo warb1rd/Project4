@@ -10,6 +10,12 @@ import LogIn from './views/LogIn'
 import LogOut from './views/LogOut'
 import Home from './views/Home';
 import httpClient from './httpClient';
+import Templates from './views/Templates.js'
+
+import Atemplate from './views/Atemplate.js'
+import Template2 from './views/Template2.js'
+import Template3 from './views/Template3.js'
+import Template4 from './views/Template4.js'
 
 
 class App extends Component {
@@ -48,6 +54,12 @@ class App extends Component {
             <Route path="/signup" render={(props) => {
               return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
             }} />
+            <Route path="/Templates" component={Templates} />  
+
+            <Route path="/Templates/Template4" component={Template4} />  
+            <Route path="/Templates/Template3" component={Template3} />  
+            <Route path="/Templates/Template2" component={Template2} />             
+            <Route path="/Templates/Atemplate" component={Atemplate} />
 
             <Route path="/" component={Home} />
 
