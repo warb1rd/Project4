@@ -3,7 +3,7 @@ const Resume = require('../models/Resume.js');
 
 module.exports = {
     index: (req, res) => {
-        Resume.find({}).populate("user").exec((err, allResumes)=> {
+        Resume.find({public: true}).populate("user").exec((err, allResumes)=> {
             res.json(allResumes)
         })
     }, 

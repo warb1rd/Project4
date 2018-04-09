@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Image } from 'semantic-ui-react'
 
 const Template4 = () => (
-    <div className="Template-container">
+    <div className="Template4">
         <div className="header">
             <h2 className="name">GANDALF</h2>
             <p>gandalf@istar.com<span>||</span><span>1159</span></p>

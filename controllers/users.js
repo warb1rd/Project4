@@ -19,7 +19,7 @@ module.exports = {
 		User.create(req.body, (err, user) => {
 			if(err) return res.json({success: false})
 			const token = signToken(user)
-			res.json({success: true, message: "User created. Token attached"})
+			res.json({success: true, message: "User created. Token attached", token})
 		})
 	},
 
@@ -44,7 +44,7 @@ module.exports = {
                 return res.json({success: false, message: "Invalid credentials"})
             }
             const token = signToken(user)
-            res.json({success: true, message: "Token attached"})
+            res.json({success: true, message: "Token attached", token})
         })
     }
 }

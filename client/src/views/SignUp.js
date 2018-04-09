@@ -44,12 +44,12 @@ class SignUp extends Component {
         const { name, email, password } = this.state.fields
 
         return (
-            <Form onChange={this.handleChange.bind(this)}onSubmit={this.handleSubmit.bind.this}>
+            <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Group>
                     <Form.Input type="text" placeholder='Name' name='name' value={name} />
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
                     <Form.Input type="password" placeholder='Password' name='password' value={password} />
-                    <Form.Button content='Submit' onClick={this.handleSubmit.bind(this)}/>
+                    <Button>Submit</Button>
                 </Form.Group>
             </Form>
         )

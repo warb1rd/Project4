@@ -4,7 +4,7 @@ import '../stylesheets/Template3.css'
 class Template2 extends Component {
     render(){
         return(
-            <div className="Template-container">
+            <div className="Template3">
                 <div className="header">
                     <h2 className="name">GANDALF</h2>
                     <p>gandalf@istar.com<span>||</span><span>1159</span></p>

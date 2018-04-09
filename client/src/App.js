@@ -13,6 +13,7 @@ import LogIn from './views/LogIn'
 
 import LogOut from './views/LogOut'
 import Home from './views/Home';
+// import PrintButton from './views/NavigationButtons/Print.js';
 
 import Templates from './views/Templates.js'
 import NewResume from './views/NewResume.js'
@@ -57,6 +58,7 @@ class App extends Component {
             <Route path="/signup" render={(props) => {
               return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
             }} />
+            {/* <Route path="/templates/print" component={PrintButton} /> */}
 
             <Route path="/templates/newresume" component={NewResume} />
             <Route path="/templates/template4" component={Template4} />  

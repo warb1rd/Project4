@@ -42,13 +42,25 @@ class Login extends Component {
         const {email, password} = this.state.fields
 
         return (
-            <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind.this}>
+            <div>
+            {Object.keys(this.state.fields).map(fieldName => {
+                return (
+                    <div>
+                        <h2>{fieldName}</h2>
+                        <p>{this.state.fields[fieldName]}</p>
+                    </div>
+                )
+            })}
+
+
+            <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Group>
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
                     <Form.Input type="password" placeholder='Password' name='password' value={password} />
-                    <Form.Button content='LOGIN' onClick={this.handleSubmit.bind(this)}/>
+                    <Button type="submit">LOGIN</Button>
                 </Form.Group>
             </Form>
+            </div>
         )
     }
 }

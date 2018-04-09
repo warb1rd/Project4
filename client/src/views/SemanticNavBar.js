@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
+// import PrintButton from './NavigationButtons/Print.js';
+
 // import ModalSignUp from './ModalSignUp';
 
 class NavigationBar extends Component {
