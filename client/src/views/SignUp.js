@@ -6,9 +6,9 @@ import httpClient from '../httpClient.js';
 class SignUp extends Component {
     state = {
         fields:{ 
-            name: '', 
-            email: '', 
-            password: ''
+            name: "", 
+            email: "", 
+            password: ""
         }
     }
     handleChange(evt) {
@@ -27,9 +27,9 @@ class SignUp extends Component {
             console.log(user)
 			this.setState({ 
                 fields: { 
-                    name: '', 
-                    email: '', 
-                    password: '' 
+                    name: "", 
+                    email: "", 
+                    password: "" 
                 } 
             })
 			if(user) {

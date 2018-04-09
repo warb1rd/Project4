@@ -22,6 +22,8 @@ const resumeSchema = new mongoose.Schema({
         degree: String,
         date: Date
     }],
+    public: Boolean,
+    
     user: {type: mongoose.Schema.Types.ObjectId, ref: "User"}               //reference the user schema    
 })
 

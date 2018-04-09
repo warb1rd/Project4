@@ -1,10 +1,21 @@
 import React, {Component} from 'react';
+import Atemplate from './Atemplate.js'
+import Template2 from './Template2.js'
+import Template3 from './Template3.js'
+import Template4 from './Template4.js'
 
 class Templates extends Component {
+    state = {
+        templates: [Atemplate, Template2, Template3, Template4]                 //Maybe create images for all of the templates and display as image?
+    }
     render(){
+        const {templates} = this.state
+        {console.log(templates)}
         return(
-            <div>
-                <h2>Map through the list of templates for a user and display</h2>
+            <div className="Templates">
+            {templates.map((t, i)=>{
+                <h2>how do i map this shit?</h2>
+            })}
             </div>
         )
     }

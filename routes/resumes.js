@@ -1,6 +1,6 @@
 const express = require('express');
 const resumesRouter = new express.Router();
-const resumesCtrl = require('../controllers/users.js');
+const resumesCtrl = require('../controllers/resumes.js');
 const {verifyToken} = require('../serverAuth.js');
 
 resumesRouter.get("/", resumesCtrl.index)

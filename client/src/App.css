@@ -3,35 +3,6 @@ body {
   background-color: #222629;
 }
 
-.App-header {
-  background-color: #222629;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.NavBar a, .NavBar button {
-	margin: 0 5px;
-	cursor: pointer;
-}
-
-.NavBar {
-	margin-bottom: 20px
-}
-
 div.ui.basic.segment, .pushable{
   margin: 0;
   padding: 20px;
@@ -50,4 +21,12 @@ div.ui.segment.pushable{
   flex-direction: column;
   margin: 0 auto;
   padding: 10px;
+} 
+
+.Form-container{
+  width: 40%;
+  border: 1px solid grey;
+  margin: auto 20px;
+  padding: 10px; 
+  /* margin: 0 auto; */
 }

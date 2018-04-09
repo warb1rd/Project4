@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
+// import ModalSignUp from './ModalSignUp';
 
 class NavigationBar extends Component {
   state = { visible: false }
@@ -15,30 +16,36 @@ class NavigationBar extends Component {
     const { visible } = this.state
     return (
       <div>
-        <Icon onClick={this.toggleVisibility} name="sidebar big"/>
+        <Icon onClick={this.toggleVisibility} name="sidebar" size="big"/>
         <Sidebar.Pushable as={Segment}>
             <Sidebar as={Menu} animation='overlay' direction='top' visible={visible} inverted>
                 
-                <Menu.Item name='home' onClick={this.handleClick.bind(this)}>
+                <Menu.Item name='home' >
                     <Icon name='home' />
                     <Link to="/">HOME</Link>
                 </Menu.Item>
 
-                <Menu.Item name='login' onClick={this.handleClick.bind(this)}>
+                <Menu.Item name='login' >
                     <Link to="/login">LOGIN</Link>
                     <Icon name='sign in' />
                 </Menu.Item>
 
-                <Menu.Item name='signUp' onClick={this.handleClick.bind(this)}>
-                    <Link to="/signup">SIGN UP</Link>
-                    <Icon name='wpforms' />      
+                <Menu.Item name='signUp'>
+                <Link to="/signup">SIGNUP</Link>
+                    <Icon name='wpforms' />
+                    {/* <ModalSignUp/> */}
                 </Menu.Item>
 
-                <Menu.Item name='templates' onClick={this.handleClick.bind(this)}>
+                <Menu.Item name='templates'>
                     <Link to="/templates">TEMPLATES</Link>
                     <Icon name='block layout' />
                 </Menu.Item>
 
+                <Menu.Item name='print'>
+                    <Link to="/templates/print">PRINT</Link>
+                    <Icon name='print' />
+                </Menu.Item>
+                
             </Sidebar>
             <Sidebar.Pusher>
                 <Segment basic>

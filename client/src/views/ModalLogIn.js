@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Form, Button, Header, Image, Modal, Icon, Menu } from 'semantic-ui-react';
 import httpClient from '../httpClient.js';
+import { Link } from 'react-router-dom';
 
-class ModalSignUp extends Component {
+class ModalLogIn extends Component {
     state = {
         fields:{ 
-            name: "", 
             email: "", 
             password: ""
         }
@@ -20,36 +20,46 @@ class ModalSignUp extends Component {
 	}
 
     handleSubmit(evt) {
+        console.log("clicked")
 		evt.preventDefault()
-		httpClient.signUp(this.state.fields).then(user => {
-			this.setState({ fields: { name: "", email: "", password: "" } })
-			if(user) {
-				this.props.onSignUpSuccess(user)
+		httpClient.logIn(this.state.fields).then(apiResponse => {
+            console.log(apiResponse)
+			this.setState({ 
+                fields: { 
+                    email: "", 
+                    password: "" 
+                }
+            })
+			if(apiResponse) {
+                console.log(this.props)
+                this.props.onLoginSuccess(apiResponse)
 				this.props.history.push('/')
 			}
 		})
-    }
+	}
     
     render(){
         const { name, email, password } = this.state
 
         return(
-            <Modal trigger={<Menu.Item></Menu.Item>}>
-            <Modal.Content>
+            <Modal class="item" content="LOGIN" trigger={ <Menu.Item>
+            </Menu.Item>}>
+            <Modal.Content >
+
             <Modal.Description>
                 <Form onSubmit={this.handleSubmit.bind.this}  onChange={this.handleChange.bind(this)}>
                     <Form.Group>
-                        <Form.Input placeholder='Name' name='name' value={name} />
                         <Form.Input placeholder='Email' name='email' value={email} />
                         <Form.Input type= "password" placeholder='Password' name='password' value={password} />
-                        <Form.Button content='Submit' />
+                        <Form.Button content='LOGIN' />
                     </Form.Group>
                 </Form>
             </Modal.Description>
             </Modal.Content>
         </Modal>
+        
         )
     }
 }
 
-export default ModalSignUp
+export default ModalLogIn
