@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import '../stylesheets/aTemplate.css'
 
-class Atemplate extends Component {
+class Template1 extends Component {
     render(){
         return(
             <div className="Template1">
@@ -55,4 +54,4 @@ class Atemplate extends Component {
     }
 }
 
-export default Atemplate
+export default Template1

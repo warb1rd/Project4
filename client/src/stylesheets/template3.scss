@@ -1,0 +1,36 @@
+.Template3 {
+    border: 1px solid grey;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: justify;
+
+    .header{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .name{
+        margin-bottom: 0;
+    }
+    
+    h3{
+        background-color: lightblue;    
+        
+    }
+    
+    h4{
+        margin: 0;
+    }
+    
+    .summary, .tech-skills, .projects, .experience, .education{
+        margin-bottom: 20px;
+    }
+    
+    .experience span {
+        font-weight: lighter;
+        font-style: italic;
+    }
+}
+
+

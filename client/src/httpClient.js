@@ -44,6 +44,14 @@ httpClient.signUp = function(userInfo) {
         })
 }
 
+httpClient.getUser = function (id){
+    return this({method: "get", url: `/api/users/${id}`})
+}
+
+httpClient.updateUser = function (id, fields){
+    return this({method: "patch", url: `/api/users/${id}`, data: fields})
+}
+
 httpClient.logOut = function() {
 	localStorage.removeItem('token')
 	delete this.defaults.headers.common.token

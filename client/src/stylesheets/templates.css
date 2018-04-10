@@ -1,0 +1,87 @@
+.Template1 {
+  border: 1px solid grey;
+  width: 595px;
+  height: 842px;
+  margin: 10px auto;
+  padding: 20px;
+  text-align: justify; }
+  .Template1 .header {
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid grey; }
+  .Template1 .name {
+    margin-bottom: 0; }
+  .Template1 h3 {
+    margin: 15px 0 0 0; }
+  .Template1 h4 {
+    margin: 0; }
+  .Template1 .summary, .Template1 .tech-skills, .Template1 .projects, .Template1 .experience, .Template1 .education {
+    margin-bottom: 20px; }
+  .Template1 .experience span {
+    font-weight: lighter;
+    display: block;
+    float: right; }
+
+.Template2 {
+  border: 1px solid grey;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: justify; }
+  .Template2 .header {
+    text-align: center;
+    margin-bottom: 10px; }
+  .Template2 .name {
+    margin-bottom: 0; }
+  .Template2 h3 {
+    border-bottom: 1px solid grey; }
+  .Template2 h4 {
+    margin: 0; }
+  .Template2 .summary, .Template2 .tech-skills, .Template2 .projects, .Template2 .experience, .Template2 .education {
+    margin-bottom: 20px; }
+  .Template2 .experience span {
+    font-weight: lighter;
+    font-style: italic; }
+
+.Template3 {
+  border: 1px solid grey;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: justify; }
+  .Template3 .header {
+    text-align: center;
+    margin-bottom: 10px; }
+  .Template3 .name {
+    margin-bottom: 0; }
+  .Template3 h3 {
+    background-color: lightblue; }
+  .Template3 h4 {
+    margin: 0; }
+  .Template3 .summary, .Template3 .tech-skills, .Template3 .projects, .Template3 .experience, .Template3 .education {
+    margin-bottom: 20px; }
+  .Template3 .experience span {
+    font-weight: lighter;
+    font-style: italic; }
+
+.Template4 {
+  border: 1px solid grey;
+  width: 50%;
+  padding: 20px;
+  text-align: justify; }
+  .Template4 .header {
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid grey; }
+  .Template4 .name {
+    margin-bottom: 0; }
+  .Template4 h3 {
+    margin: 15px 0 0 0; }
+  .Template4 h4 {
+    margin: 0; }
+  .Template4 .summary, .Template4 .tech-skills, .Template4 .projects, .Template4 .experience, .Template4 .education {
+    margin-bottom: 20px; }
+  .Template4 .experience span {
+    font-weight: lighter;
+    display: block;
+    float: right; }

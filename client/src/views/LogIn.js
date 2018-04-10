@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import httpClient from '../httpClient.js';
 
-
 class Login extends Component {
     state = {
         fields:{ 
@@ -60,9 +59,12 @@ class Login extends Component {
                     <Button type="submit">LOGIN</Button>
                 </Form.Group>
             </Form>
+           
             </div>
+            
         )
     }
+    
 }
 
 export default Login
