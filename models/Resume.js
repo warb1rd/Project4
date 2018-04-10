@@ -6,21 +6,21 @@ const resumeSchema = new mongoose.Schema({
         phone: String
     },
     summary: String, 
-    technical: [],
+    technical: String,
     projects: [{
         title: String,
         description: String
     }],
     experience: [{
         company: String,
-        title: String,
+        jobTitle: String,
         date: Date, 
         details: String
     }],
     education: [{
         institution: String,
         degree: String,
-        date: Date
+        graduationDate: Date
     }],
     makePublic: Boolean,
     

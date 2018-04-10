@@ -1,57 +1,90 @@
 import React, {Component} from 'react';
-import { Form , Button, Grid } from 'semantic-ui-react';
-import Template4 from './Template4.js';
+import { Form , Grid } from 'semantic-ui-react';
+// import Template4 from './Template4.js';
 import Summary from './Summary.js';
 import Technical from './Technical.js';
 import Projects from './Projects.js';
 import Experience from './Experience.js';
 import Education from './Education.js'
+import httpClient from '../../httpClient.js';
 
 
 class NewResume extends Component {
     state = {
-        header:{
-            name: "",
-            email: "",
-            phone: ""
-        },
-        summarry: "", 
-        technical: [],
-        projects: [{
-            title: "",
-            description: ""
-        }],
-        experience: [{
-            company: "",
-            title: "",
-            date: "", 
-            details: ""
-        }],
-        education: [{
-            institution: "",
-            degree: "",
-            graduationDate: ""
-        }],
+        // header:{
+        name: "",
+        email: "",
+        phone: "",
+        // },
+        summary: "", 
+        technical: "",
+        // projects: [{
+        title: "",
+        description: "",
+        // }],
+        // experience: [{
+        company: "",
+        jobTitle: "",
+        date: "", 
+        details: "",
+        // }],
+        // education: [{
+        institution: "",
+        degree: "",
+        graduationDate: "",
+        // }],
         makePublic: false,
     }
+
     handleChange(event) {
 		this.setState({
-            header:{
-                ...this.state.header,
+                ...this.state,
                 [event.target.name]: event.target.value
-            }, 
 		})
     }
+
+    handleFormSubmit(evt) {
+        evt.preventDefault()
+        const {name, email, phone, summary, technical, title, description, company, 
+            jobTitle, date, details, institution, degree, graduationDate} = this.state
+        const dataToSend = {
+            headers: {
+                name: name,
+                email: email,
+                phone: phone
+            },
+            summary: summary, 
+            technical: technical,
+            projects: [{
+                title: title,
+                description: description,
+            }],
+            experience: [{
+                company: company,
+                title: title,
+                date: date, 
+                details: details,
+            }],
+            education: [{
+                institution: institution,
+                degree: degree,
+                graduationDate: graduationDate,
+            }],
+        }
+        httpClient.createResume(dataToSend).then((apiResponse) => {
+            this.props.history.push("/profile")
+
+        })
+    }
+
     //use component did mount? history.goBack
    render(){        
-        const {name, email, phone,} = this.state.header
-        const {summary, technical} = this.state
-        const {company, title, date, details} = this.state.experience
-        const {institution, degree, graduationDate} = this.state.education 
-        console.log(summary)    
+        const {name, email, phone, summary, technical, title, description, company, 
+            jobTitle, date, details, institution, degree, graduationDate} = this.state
+        console.log(this.state)    
         return (
             <div>
-            <Form onChange={this.handleChange.bind(this)} className="Form-container">
+            <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">
                 <Form.Group widths='equal'>
                     <Form.Field label='NAME' name='name'  control='input' />
                     <Form.Field label='EMAIL' name='email' control='input'/>
@@ -61,11 +94,11 @@ class NewResume extends Component {
                 <Form.Group>
                     <Form.Field label='SUMMARY' name='summary' control='textarea' rows='3'/>
                 </Form.Group>
-
+                
                 <Form.Group>
                     <Form.Field label='TECHNICAL SKILLS' control='input'/>
                 </Form.Group>
-
+                    
                 <Form.Group widths='equal'>
                     <Form.Field label='PROJECTS' placeholder='Title' control='input' rows='1' />
                     <Form.Field label='.' placeholder='Description' control='textarea' rows='2' />
@@ -94,27 +127,24 @@ class NewResume extends Component {
                     <Form.Field label='Make Public' control='input' type='checkbox' />
                 </Form.Group>
             </Form>
-
-            {Object.keys(this.state.header).map(fieldName => {
-                return (
+           
                     <div>
                         <div className="Template4">
                             <div className="header">
-                                <h2 className="name">{this.state.header[fieldName]}</h2>
-                                <p>{this.state.header.email}<span>||</span><span>{this.state.header.phone}</span></p>
+                                <h2 className="name">{name}</h2>
+                                <p>{email}<span> || </span><span>{phone}</span></p>
                             </div>
                                     
                             <Grid columns={2} divided> 
-                                <Summary summarry={summary}/>
-                                <Technical />  
-                                <Projects />
-                                <Experience />                              
-                                <Education />              
+                                <Summary content={summary}/>
+                                <Technical content={technical}/>  
+                                <Projects content={title}/>
+                                <Experience content={company}/>                              
+                                <Education content={institution}/>              
                             </Grid>
                             </div>
                 </div>
-                )
-            })}
+                
             </div>
         )
     }

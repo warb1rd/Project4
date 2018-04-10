@@ -67,6 +67,7 @@
 .Template4 {
   border: 1px solid grey;
   width: 50%;
+  margin: 0 auto;
   padding: 20px;
   text-align: justify; }
   .Template4 .header {

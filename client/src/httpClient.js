@@ -58,6 +58,10 @@ httpClient.logOut = function() {
 	return true
 }
 
+httpClient.createResume = function (resume){
+    return this({method: "post", url: "/api/resumes", data: resume})
+}
+
 httpClient.defaults.headers.common.token = httpClient.getToken()                                        
 
 export default httpClient

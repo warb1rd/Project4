@@ -24,12 +24,13 @@ module.exports = {
 	},
 
     update: (req, res) => {
-        User.findById(req.params.id, req.body, (err, user) => {
-            Object.assign(user, req.body)
-            user.save((err, updatedUser) => {
+        // User.findById(req.params.id, req.body, (err, user) => {
+            if(!req.body.password) delete req.body.password
+            Object.assign(req.user, req.body)
+            req.user.save((err, updatedUser) => {
                 res.json({success: true, message: "User updated", user: updatedUser})
             })
-        })
+        // })
     },
 
     destroy: (req, res) => {

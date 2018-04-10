@@ -5,12 +5,15 @@ import httpClient from '../../httpClient.js'
 class Profile extends Component {
 
     state = {
-        fields: "",
+        fields: {
+            name: "",
+            email: "",
+            password: ""
+        },
         modalOpen: false
     }
 
     handleEditClick(){
-        console.log("clicked")
         this.setState({
             modalOpen: true
         })
@@ -19,16 +22,25 @@ class Profile extends Component {
     handleSubmit(evt) {
         console.log("clicked")
 		evt.preventDefault()
-		httpClient.updateUser(this.props.currentUser._id).then(user => {
-            console.log(user)
+		httpClient.updateUser(this.props.currentUser._id, this.state.fields).then((apiResponse) => {
+            console.log(apiResponse)
 			this.setState({ 
-              modalOpen: false
+                fields: apiResponse.data,
+                modalOpen: false
             })
-		})
-	}
+        })
+    }
+
+    handleChange(evt) {
+        this.setState({
+            fields: {
+                ...this.state.fields,
+                [evt.target.name]: evt.target.value
+            }
+        })
+    }
 
     componentDidMount(){
-
         httpClient.getUser(this.props.currentUser._id).then((serverResponse)=>{
             console.log(serverResponse)
             this.setState({
@@ -36,7 +48,6 @@ class Profile extends Component {
             })
         })
     }
-
 
     render(){
         const {fields, modalOpen} = this.state
@@ -48,12 +59,12 @@ class Profile extends Component {
                     header={this.state.fields.name}
                     meta={this.state.fields.email}
                     extra={<Button onClick={this.handleEditClick.bind(this)}>EDIT</Button>}
-                    />} isOpen={modalOpen} >
+                    />} open={modalOpen} >
 
                   <Modal.Header>EDIT YOUR PROFILE</Modal.Header>
                   <Modal.Content image>
                     <Image wrapped size='small' src='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg' />
-                    <Form onSubmit={this.handleSubmit.bind(this)}>
+                    <Form onSubmit={this.handleSubmit.bind(this)} onChange={this.handleChange.bind(this)}>
                         <Form.Group>
                             <Form.Input type="text" value={fields.name} name='name' />
                             <Form.Input type="text" placeholder='Email' name='email' value={fields.email} />
