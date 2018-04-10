@@ -20,37 +20,44 @@ class NavigationBar extends Component {
         <Sidebar.Pushable as={Segment}>
             <Sidebar as={Menu} animation='overlay' direction='top' visible={visible} inverted>
                 
-                <Menu.Item name='home' >
+                <Menu.Item name='home' id="home" >
                     <Link to="/">HOME </Link>
                     <Icon name='home' />
                 </Menu.Item>
         {this.props.currentUser
             ?   (<span>
-                    <Menu.Item name='templates'>
+                    <Menu.Item name='templates' id="template">
                         <Link to="/templates">TEMPLATES </Link>
                         <Icon name='block layout' />
                     </Menu.Item>
-                    <Menu.Item name='print' onClick={ () => window.print()}>
+            
+                    <Menu.Item name='newresume' id="newResume">
+                        <Link to="/templates/newresume">NEW RESUME </Link>
+                        <Icon name='file text outline' />
+                    </Menu.Item>
+
+                    <Menu.Item name='print' onClick={ () => window.print()} id="print">
                         PRINT
                         <Icon name='print' />
                     </Menu.Item>
-                    <Menu.Item name='logout'>
-                        <Link to="/logout">LOGOUT </Link>
-                        <Icon name='log out' />
-                    </Menu.Item>
-                    <Menu.Item name='profile'>
+
+                    <Menu.Item name='profile' id="profile">
                         <Link to="/profile">PROFILE </Link>
                         <Icon name='user' />
+                    </Menu.Item>
+                    <Menu.Item name='logout' id="logout">
+                        <Link to="/logout">LOGOUT </Link>
+                        <Icon name='log out' />
                     </Menu.Item>
                 </span>
             )
             :(    <span>
-                    <Menu.Item name='login' >
+                    <Menu.Item name='login' id="login">
                         <Link to="/login">LOGIN </Link>
                         <Icon name='sign in' />
                     </Menu.Item>
 
-                    <Menu.Item name='signUp'>
+                    <Menu.Item name='signUp' id="signUp">
                         <Link to="/signup">SIGNUP </Link>
                         <Icon name='wpforms' />
                         {/* <ModalSignUp/> */}

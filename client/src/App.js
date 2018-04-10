@@ -6,21 +6,21 @@ import 'semantic-ui-css/semantic.min.css';
 import httpClient from './httpClient';
 import './App.css';
 import NavigationBar from './views/SemanticNavBar.js';
-import SignUp from './views/SignUp';
+import SignUp from './views/User/SignUp';
 // import ModalSignUp from './views/ModalSignUp';
-import LogIn from './views/LogIn'
-// import ModalLogIn from './views/LogIn'
+import LogIn from './views/User/LogIn'
+// import ModalLogIn from './views/ModalLogIn'
 
-import LogOut from './views/LogOut'
+import LogOut from './views/User/LogOut'
 import Home from './views/Home';
-import Profile from './views/Profile.js'
+import Profile from './views/User/Profile.js'
 
-import Templates from './views/Templates.js'
-import NewResume from './views/NewResume.js'
-import Template1 from './views/Template1.js'
-import Template2 from './views/Template2.js'
-import Template3 from './views/Template3.js'
-import Template4 from './views/Template4.js'
+import Templates from './views/Templates/Templates.js'
+import NewResume from './views/Templates/NewResume.js'
+import Template1 from './views/Templates/Template1.js'
+import Template2 from './views/Templates/Template2.js'
+import Template3 from './views/Templates/Template3.js'
+import Template4 from './views/Templates/Template4.js'
 
 class App extends Component {
   state = { 
@@ -60,7 +60,9 @@ class App extends Component {
               return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
             }} />
 
-            <Route path="/profile" currentUser={currentUser} component={Profile} />
+            <Route path="/profile" render={()=>{
+              return <Profile currentUser={currentUser}/>
+            }} />
 
             <Route path="/templates/newresume" component={NewResume} />
             <Route path="/templates/template4" component={Template4} />  

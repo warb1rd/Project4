@@ -1,6 +1,7 @@
 body {
   
   /* background-color: #222629;  */
+  font-family: 'Montserrat', sans-serif;
 }
 
 div.ui.basic.segment, .pushable{
@@ -36,4 +37,12 @@ div.ui.segment.pushable{
 
 .NavBar span{
   display: flex;
+}
+
+#template, #newResume, #print, #profile, #logout, #login, #signUp, #home {
+  /* background-color: red;  */
+  padding: 0 65px 0 65px;
+}
+div .ui.card{
+  margin: 50px auto;
 }

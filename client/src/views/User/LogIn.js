@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import httpClient from '../httpClient.js';
+import httpClient from '../../httpClient.js'
 
 class Login extends Component {
     state = {

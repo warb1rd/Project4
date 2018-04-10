@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Button, Header, Image, Modal, Card, Form } from 'semantic-ui-react';
-import httpClient from '../httpClient.js'
+import httpClient from '../../httpClient.js'
 
 class Profile extends Component {
 
     state = {
-        fields: httpClient.getCurrentUser(),
+        fields: "",
         modalOpen: false
     }
 
@@ -15,12 +15,11 @@ class Profile extends Component {
             modalOpen: true
         })
     }
-
-
+  
     handleSubmit(evt) {
         console.log("clicked")
 		evt.preventDefault()
-		httpClient.updateUser(this.state.fields).then(user => {
+		httpClient.updateUser(this.props.currentUser._id).then(user => {
             console.log(user)
 			this.setState({ 
               modalOpen: false
@@ -29,42 +28,45 @@ class Profile extends Component {
 	}
 
     componentDidMount(){
-        httpClient.getUser(this.props.match.params.id).then((serverResponse) => {
+
+        httpClient.getUser(this.props.currentUser._id).then((serverResponse)=>{
+            console.log(serverResponse)
             this.setState({
                 fields: serverResponse.data
             })
         })
     }
-   
 
 
     render(){
         const {fields, modalOpen} = this.state
         return(
-            <div>
-            <Card
-            header={this.state.fields.name}
-            meta={this.state.fields.email}
-            extra={<Button onClick={this.handleEditClick.bind(this)}>EDIT</Button>}
-            />
-                <Modal isOpen={modalOpen} >
-                  <Modal.Header>Select a Photo</Modal.Header>
+            <div>         
+            
+                <Modal className="ModalProfile" trigger={<Card className="Profile-card"
+                    image='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg'
+                    header={this.state.fields.name}
+                    meta={this.state.fields.email}
+                    extra={<Button onClick={this.handleEditClick.bind(this)}>EDIT</Button>}
+                    />} isOpen={modalOpen} >
+
+                  <Modal.Header>EDIT YOUR PROFILE</Modal.Header>
                   <Modal.Content image>
-                    <Image wrapped size='medium' src='/assets/images/avatar/large/rachel.png' />
+                    <Image wrapped size='small' src='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg' />
                     <Form onSubmit={this.handleSubmit.bind(this)}>
-                <Form.Group>
-                    <Form.Input type="text" defaultValue={fields.name} name='name' />
-                    <Form.Input type="text" placeholder='Email' name='email' value={fields.email} />
-                    <Form.Input type="password" placeholder='Password' name='password' />
-                    <Button>Submit</Button>
-                </Form.Group>
-            </Form>
+                        <Form.Group>
+                            <Form.Input type="text" value={fields.name} name='name' />
+                            <Form.Input type="text" placeholder='Email' name='email' value={fields.email} />
+                            <Form.Input type="password" placeholder='Password' name='password' />
+                            <Button>Submit</Button>
+                        </Form.Group>
+                    </Form>
                     
                   </Modal.Content>
                 </Modal>
-                </div>
-              )
-        }
+            </div>
+        )
+    }
 }
 
 export default Profile
@@ -88,12 +90,3 @@ export default Profile
 //     })
 // }
 
-
-// handleChange(evt) {
-//     this.setState({
-//         fields: {
-//             ...this.state.fields,
-//             [evt.target.name]: evt.target.value
-//         }
-//     })
-// }
