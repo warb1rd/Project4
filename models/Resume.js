@@ -24,6 +24,7 @@ const resumeSchema = new mongoose.Schema({
         graduationDate: Date
     }],
     makePublic: Boolean,
+    templateName: [],
     
     user: {type: mongoose.Schema.Types.ObjectId, ref: "User"}               //reference the user schema    
 })

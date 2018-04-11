@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form , Grid, Checkbox } from 'semantic-ui-react';
+import { Form , Grid, Checkbox, Menu, Dropdown } from 'semantic-ui-react';
 // import Template4 from './Template4.js';
 import Summary from './Summary.js';
 import Technical from './Technical.js';
@@ -27,6 +27,7 @@ import httpClient from '../../httpClient.js';
 class NewResume extends Component {
     state = {
         templateName: "Template3",
+        // [{name:"Template1",name:"Template2", name:"Template3", name:"Template4"}]
         name: "",
         email: "",
         phone: "",
@@ -93,11 +94,12 @@ class NewResume extends Component {
     //use component did mount? history.goBack
    render(){  
         const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, startDate, endDate, details, institution, degree, graduationDate} = this.state
+            jobTitle, startDate, endDate, details, institution, degree, graduationDate, templateName} = this.state
         return (
             <div>
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">
                 <Form.Group widths='equal'>
+                    <Dropdown placeholder='TEMPLATES' search selection options={templateName} />
                     <Form.Field label='NAME' name='name'  control='input' />
                     <Form.Field label='EMAIL' name='email' control='input'/>
                     <Form.Field label='PHONE' name='phone' control='input' />

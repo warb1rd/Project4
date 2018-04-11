@@ -118,78 +118,44 @@ class Profile extends Component {
            
         {resumes.map((r) => {
             return(
-                <div className="Template4">
+                <div className="Template2">
                     <div className="header">
                         <h2 className="name">{r.name}</h2>
                         <p>{r.email}<span>||</span><span>{r.phone}</span></p>
                     </div>
-                    <Grid columns={2} divided>
-            
-                        <Grid.Row>
-                            <Grid.Column>
-                                <p>{r.summary}</p>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h3>SUMMARY</h3>                
-                            </Grid.Column>
-                            <Grid.Column>
-                                <p></p>
-                            </Grid.Column>
-                        </Grid.Row>
-            
-                        <Grid.Row>
-                            <Grid.Column>
-                                <p>{r.technical}</p>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h3>TECHNICAL SKILLS</h3>                
-                            </Grid.Column>
-                            <Grid.Column>
-                                <p></p>
-                            </Grid.Column>
-                        </Grid.Row>
-            
-                        <Grid.Row>
-                            <Grid.Column>
-                                <p>{r.projects.title}</p>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h3>PROJECTS</h3>  
-                            </Grid.Column>
-                            <Grid.Column>
-                                <p></p>
-                            </Grid.Column>
-                        </Grid.Row>
-            
-                        <Grid.Row>
-                            <Grid.Column>
-                                <p></p>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h3>EXPERIENCE</h3> 
-                                <h4>Company1</h4> <br/>
-                                <h4>Company2</h4> <br/>
-                            
-                            </Grid.Column>
-                            <Grid.Column>
-                                <p></p>
-                            </Grid.Column>
-                        </Grid.Row>
-                        
-                        <Grid.Row>
-                            <Grid.Column>
-                                <p></p>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h3>EDUCATION</h3> 
-                                <h4>School1</h4> <br/>
-                                <h4>School2</h4> <br/>               
-                            </Grid.Column>
-                            <Grid.Column>
-                                <p></p>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+          
+                <div className="summary">
+                    <h3>SUMMARY</h3>
+                    <p>{r.summary}</p>
+                </div>
+
+                <div className="tech-skills">
+                    <h3>TECHNICAL SKILLS</h3>
+                    <p>{r.technical}</p>
+                </div>
+
+                <div className="projects">
+                    <h3>PROJECTS</h3>
+                    <h4>{r.title}</h4>
+                    <p>{r.description}</p>
+
+                </div>
+
+                <div className="experience">
+                    <h3>EXPERIENCE</h3>
+                    <p>{r.company}</p>                    
+                    <h4>{r.jobTitle} <span> {r.startDate} to {r.endDate}</span></h4>
+                    <p>{r.details}</p>
+                    {/* <p>Company</p>                    
+                    <h4>Title <span>, 10 Jan 2010 </span></h4>
+                    <p>{r.phone}</p>                    */}
+                </div>
+                <div className="education">
+                    <h3>EDUCATION</h3>
+                        <h4>{r.institution}</h4>
+                            <p>{r.degree}<span> {r.graduationDate}</span></p>                      
+                
+                </div>
                 </div>
              )
 
@@ -203,22 +169,70 @@ class Profile extends Component {
 
 export default Profile
 
-// handleSubmit(evt) {
-//     evt.preventDefault()
-//     console.log("clicked")
-//     const {name, email, password} = this.refs
-//     const {userFields} = {
-//         name: refs.name.value,
-//         email: refs.email.value,
-//         password: refs.password.value
-//     }
-//     httpClient.updateUser(this.props.match.params.id).then(user => {
-//         console.log(user)
-//         this.setState({ 
-//             currentUser:serverResponse.data.currentUser,
-//             modalOpen: false
+{/* <Grid columns={2} divided>
+            
+            <Grid.Row>
+                <Grid.Column>
+                    <p>{r.summary}</p>
+                </Grid.Column>
+                <Grid.Column>
+                    <h3>SUMMARY</h3>                
+                </Grid.Column>
+                <Grid.Column>
+                    <p></p>
+                </Grid.Column>
+            </Grid.Row>
 
-//         })
-//     })
-// }
+            <Grid.Row>
+                <Grid.Column>
+                    <p>{r.technical}</p>
+                </Grid.Column>
+                <Grid.Column>
+                    <h3>TECHNICAL SKILLS</h3>                
+                </Grid.Column>
+                <Grid.Column>
+                    <p></p>
+                </Grid.Column>
+            </Grid.Row>
 
+            <Grid.Row>
+                <Grid.Column>
+                    <p>{r.projects.title}</p>
+                </Grid.Column>
+                <Grid.Column>
+                    <h3>PROJECTS</h3>  
+                </Grid.Column>
+                <Grid.Column>
+                    <p></p>
+                </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+                <Grid.Column>
+                    <p></p>
+                </Grid.Column>
+                <Grid.Column>
+                    <h3>EXPERIENCE</h3> 
+                    <h4>Company1</h4> <br/>
+                    <h4>Company2</h4> <br/>
+                
+                </Grid.Column>
+                <Grid.Column>
+                    <p></p>
+                </Grid.Column>
+            </Grid.Row>
+            
+            <Grid.Row>
+                <Grid.Column>
+                    <p></p>
+                </Grid.Column>
+                <Grid.Column>
+                    <h3>EDUCATION</h3> 
+                    <h4>School1</h4> <br/>
+                    <h4>School2</h4> <br/>               
+                </Grid.Column>
+                <Grid.Column>
+                    <p></p>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid> */}
