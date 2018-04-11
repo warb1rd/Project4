@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
 import { Form , Button, Grid } from 'semantic-ui-react';
 
+class Description extends Component {
 
-class Summary extends Component {
     render(){
         const {content} = this.props
-        console.log(content)
-        return(
-                          
+        return(                 
             <Grid.Row>
                 <Grid.Column>
                     <p>{content}</p>
                 </Grid.Column>
                 <Grid.Column>
-                    <h3>SUMMARY</h3>                
+                    <p></p>
                 </Grid.Column>
             </Grid.Row>
-        )
+            )
+        }
     }
-}
-
-export default Summary
+                                
+export default Description

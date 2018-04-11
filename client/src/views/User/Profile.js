@@ -53,14 +53,13 @@ class Profile extends Component {
         const {fields, modalOpen} = this.state
         return(
             <div>         
-            
+
                 <Modal className="ModalProfile" trigger={<Card className="Profile-card"
                     image='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg'
                     header={this.state.fields.name}
                     meta={this.state.fields.email}
                     extra={<Button onClick={this.handleEditClick.bind(this)}>EDIT</Button>}
                     />} open={modalOpen} >
-
                   <Modal.Header>EDIT YOUR PROFILE</Modal.Header>
                   <Modal.Content image>
                     <Image wrapped size='small' src='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg' />

@@ -24,8 +24,8 @@ class NavigationBar extends Component {
                     <Link to="/">HOME </Link>
                     <Icon name='home' />
                 </Menu.Item>
-        {this.props.currentUser
-            ?   (<span>
+                {this.props.currentUser
+                ?(<span>
                     <Menu.Item name='templates' id="template">
                         <Link to="/templates">TEMPLATES </Link>
                         <Icon name='block layout' />
@@ -50,8 +50,8 @@ class NavigationBar extends Component {
                         <Icon name='log out' />
                     </Menu.Item>
                 </span>
-            )
-            :(    <span>
+                )
+                :(<span>
                     <Menu.Item name='login' id="login">
                         <Link to="/login">LOGIN </Link>
                         <Icon name='sign in' />
@@ -63,7 +63,7 @@ class NavigationBar extends Component {
                         {/* <ModalSignUp/> */}
                     </Menu.Item>x
                 </span>  
-            )     
+                )     
         } 
             </Sidebar>
             <Sidebar.Pusher>

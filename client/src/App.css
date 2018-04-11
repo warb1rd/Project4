@@ -45,4 +45,25 @@ div.ui.segment.pushable{
 }
 div .ui.card{
   margin: 50px auto;
+
 }
+
+.ui.form.Form-container{
+  display: inline-block;
+}
+
+.ui.active.dimmer.modals.transition {                                                         /* Semantic UI modal position fix */
+  display: flex !important;
+  display: -ms-flexbox !important;
+}
+
+.ui.card.Profile-card{                            
+  margin-top: 20px;
+}
+
+/* @media print {
+  .no-print {
+    display: none;
+  }
+
+} */

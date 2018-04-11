@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import { Form , Button, Grid } from 'semantic-ui-react';
 
 
-class Technical extends Component {  
-    
+class Technical extends Component { 
     render(){
         const {content} = this.props
         console.log(content)

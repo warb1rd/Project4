@@ -1,5 +1,4 @@
 .Template1 {
-  border: 1px solid grey;
   width: 595px;
   height: 842px;
   margin: 10px auto;
@@ -23,8 +22,8 @@
     float: right; }
 
 .Template2 {
-  border: 1px solid grey;
-  width: 50%;
+  width: 595px;
+  height: 842px;
   margin: 0 auto;
   padding: 20px;
   text-align: justify; }
@@ -69,7 +68,8 @@
   width: 50%;
   margin: 0 auto;
   padding: 20px;
-  text-align: justify; }
+  text-align: justify;
+  float: right; }
   .Template4 .header {
     text-align: center;
     margin-bottom: 10px;
@@ -86,3 +86,17 @@
     font-weight: lighter;
     display: block;
     float: right; }
+  .Template4 p {
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
