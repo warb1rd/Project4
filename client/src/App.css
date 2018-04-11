@@ -1,22 +1,27 @@
 body {
-  
+  font-weight: lighter;
   /* background-color: #222629;  */
   font-family: 'Montserrat', sans-serif;
+  /* color: #ffffffe6; */
 }
 
 div.ui.basic.segment, .pushable{
   margin: 0;
   padding: 20px;
   border-radius: none;
+  /* background-color: #222629; */
 }
 .ui form .Form-container{
   display: inline-block;
 }
+
+
 div.ui.segment.pushable{
   margin: 0;
   box-shadow: none;
   border: none;
   border-radius: 0;
+  overflow: hidden;
   /* background: #222629 */
 }
 
@@ -26,6 +31,15 @@ div.ui.segment.pushable{
   margin: 0 auto;
   padding: 10px;
 } 
+
+i.big.icon, i.big.icons{
+  color: #f0c311;
+}
+
+/* .Modal {                                                         Semantic UI modal position fix */ */
+  /* display: flex !important; */
+  /* display: -ms-flexbox !important; */
+/* } */
 
 .Form-container{
   width: 40%;
@@ -37,11 +51,16 @@ div.ui.segment.pushable{
 
 .NavBar span{
   display: flex;
+  background-color: #222629;
+  overflow: hidden;
+  
 }
 
 #template, #newResume, #print, #profile, #logout, #login, #signUp, #home {
   /* background-color: red;  */
   padding: 0 65px 0 65px;
+  background-color: #222629;
+  /* color: yellowgreen; */
 }
 div .ui.card{
   margin: 50px auto;
@@ -50,6 +69,7 @@ div .ui.card{
 
 .ui.form.Form-container{
   display: inline-block;
+  width: 500px;
 }
 
 .ui.active.dimmer.modals.transition {                                                         /* Semantic UI modal position fix */
@@ -61,6 +81,14 @@ div .ui.card{
   margin-top: 20px;
 }
 
+.field label {
+  color: #ffffffe6;
+}
+
+.ui.inverted.ui.overlay.top.visible.sidebar.menu{
+  background-color: #222629;
+
+}
 /* @media print {
   .no-print {
     display: none;

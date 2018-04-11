@@ -61,7 +61,7 @@ class NavigationBar extends Component {
                         <Link to="/signup">SIGNUP </Link>
                         <Icon name='wpforms' />
                         {/* <ModalSignUp/> */}
-                    </Menu.Item>x
+                    </Menu.Item>
                 </span>  
                 )     
         } 

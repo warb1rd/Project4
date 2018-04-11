@@ -11,7 +11,7 @@ class Projects extends Component {
                     <p>{content}</p>
                 </Grid.Column>
                 <Grid.Column>
-                    <h3>PROJECTS</h3>  
+                    <h4>PROJECTS</h4>  
                 </Grid.Column>
             </Grid.Row>
             )

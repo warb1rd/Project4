@@ -7,16 +7,26 @@ import Projects from './Projects.js';
 import Description from './Description.js';
 import Experience from './Experience.js';
 import Company from './Company.js';
+import JobTitle from './JobTitle.js'
 import Details from './Details.js';
-import DateFrom from './DateFrom.js';
+import StartDate from './StartDate.js';
+import EndDate from './EndDate.js';
+import Template1 from './Template1.js';
+import Template2 from './Template2.js'
+import Template3 from './Template3.js'
+import Template4 from './Template4.js'
 
+import Education from './Education.js';
+import Institution from './Institution.js';
+import Degree from './Degree.js'
+import GraduationDate from './GraduationDate.js';
 
-import Education from './Education.js'
 import httpClient from '../../httpClient.js';
 // import Date from '../DatePicker.js'
 
 class NewResume extends Component {
     state = {
+        templateName: "Template3",
         name: "",
         email: "",
         phone: "",
@@ -26,8 +36,8 @@ class NewResume extends Component {
         description: "",
         company: "",
         jobTitle: "",
-        dateFrom: "", 
-        dateTo: "",         
+        startDate: "", 
+        endDate: "",         
         details: "",
         institution: "",
         degree: "",
@@ -46,7 +56,7 @@ class NewResume extends Component {
     handleFormSubmit(evt) {
         evt.preventDefault()
         const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, dateFrom, dateTo, details, institution, degree, graduationDate} = this.state
+            jobTitle, startDate, endDate, details, institution, degree, graduationDate, makePublic} = this.state
         const dataToSend = {
             headers: {
                 name: name,
@@ -61,9 +71,9 @@ class NewResume extends Component {
             }],
             experience: [{
                 company: company,
-                title: title,
-                dateFrom: dateFrom, 
-                dateTo: dateTo,
+                jobTitle: title,
+                startDate: startDate, 
+                endDate: endDate,
                 details: details,
             }],
             education: [{
@@ -71,19 +81,19 @@ class NewResume extends Component {
                 degree: degree,
                 graduationDate: graduationDate,
             }],
+            makePublic: makePublic
         }
         console.log(dataToSend)
         httpClient.createResume(dataToSend).then((apiResponse) => {
             this.props.history.push("/profile")
-
+            console.log(apiResponse)
         })
     }
 
     //use component did mount? history.goBack
    render(){  
         const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, dateFrom, dateTo, details, institution, degree, graduationDate} = this.state
-        console.log(this.state)    
+            jobTitle, startDate, endDate, details, institution, degree, graduationDate} = this.state
         return (
             <div>
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">
@@ -109,15 +119,15 @@ class NewResume extends Component {
                 <Form.Group widths='equal'>
                     <Form.Field label='EXPERIENCE' placeholder='Company' name='company' control='input' rows='1' />
                     <Form.Field label='.' placeholder='Job Title' name='jobTitle' control='input' rows='2' />
-                    <Form.Field label='.' placeholder='Date from' name='dateTo' type='date' control='input'  rows='2' />
-                    <Form.Field label='.' placeholder='Date to' name='dateTo' type='date' control='input' rows='2' />
+                    <Form.Field label='From' placeholder='Date from' name='startDate' type='date' control='input'  rows='2' />
+                    <Form.Field label='To' placeholder='Date to' name='endDate' type='date' control='input' rows='2' />
                     <Form.Field label='.' placeholder='Details' name='details' control='textarea' rows='2' />                  
                 </Form.Group>
                 
                 <Form.Group widths='equal'>
                     <Form.Field label='EDUCATION' placeholder='Institution' name='institution' control='input' rows='1' />
                     <Form.Field label='.' placeholder='Degree' control='input' name='degree' rows='2' />
-                    <Form.Field label='.' placeholder='Date' control='input' type='date' name='date' rows='2' />
+                    <Form.Field label='.' placeholder='Date' control='input' type='date' name='graduationDate' rows='2' />
                 </Form.Group>
                 
                 <Form.Field control='button'>
@@ -130,7 +140,7 @@ class NewResume extends Component {
                     </Form.Field>
                 </Form.Group>
             </Form>          
-                        <div className='Template4'>
+                        {/* <div className='Template4'>
                             <div className='header'>
                                 <h2 className='name'>{name}</h2>
                                 <p>{email}<span> || </span><span>{phone}</span></p>
@@ -140,21 +150,27 @@ class NewResume extends Component {
                                 <Summary content={summary}/>
                                 <Technical content={technical}/>  
                                 <Projects content={title}/>
-                                    <Description content={description}/>
+                                    <Description content={description}/>                             
+                                
                                 <Experience content={company}/> 
                                     <JobTitle content={jobTitle}/>
-                                    <DateFrom content={dateFrom}/>                             
-                                    <DateTo content={dateTo}/>                             
-                                    <Description content={description}/>                             
+                                    <StartDate content={startDate}/> - <EndDate content={endDate}/>       
+                                    <Details content={details}/>
+                                                          
                                                                      
                                 <Education content={institution}/>
-                                    <Institution content={institution}/>                             
                                     <Degree content={degree}/> 
-                                    <GraduationDate content={graduationDate}/>                             
-                                                                
+                                    <GraduationDate content={graduationDate}/>                                                                                            
                                               
                             </Grid>
-                            </div>
+                            </div> */}
+
+                { ({
+                    Template1: <Template1 content={this.state}  />,
+                    Template2: <Template2 content={this.state} />,
+                    Template3: <Template3 content={this.state} />,
+                    Template4: <Template4 content={this.state} />
+                })[this.state.templateName] }
                 
             </div>
         )

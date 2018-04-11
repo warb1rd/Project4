@@ -32,7 +32,7 @@ class Login extends Component {
 			if(apiResponse) {
                 console.log(this.props)
                 this.props.onLoginSuccess(apiResponse)
-				this.props.history.push('/')
+				this.props.history.push('/profile')
 			}
 		})
 	}

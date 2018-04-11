@@ -13,7 +13,7 @@ class Summary extends Component {
                     <p>{content}</p>
                 </Grid.Column>
                 <Grid.Column>
-                    <h3>SUMMARY</h3>                
+                    <h4>SUMMARY</h4>                
                 </Grid.Column>
             </Grid.Row>
         )

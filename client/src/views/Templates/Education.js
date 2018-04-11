@@ -11,7 +11,7 @@ class Education extends Component {
                 <p>{content}</p>
             </Grid.Column>
             <Grid.Column>
-                <h3>EDUCATION</h3>             
+                <h4>EDUCATION</h4>             
             </Grid.Column>
         </Grid.Row>           
         )

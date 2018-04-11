@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { Form , Button, Grid } from 'semantic-ui-react';
 
-class Experience extends Component {
-
+class Degree extends Component {
     render(){
         const {content} = this.props
 
@@ -12,11 +11,11 @@ class Experience extends Component {
                 <p>{content}</p>
             </Grid.Column>
             <Grid.Column>
-                <h4>EXPERIENCE</h4> 
+                <h3></h3> 
             </Grid.Column>
             </Grid.Row>
         )
     }
 }
                         
-export default Experience
+export default Degree

@@ -60,8 +60,8 @@ class App extends Component {
               return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
             }} />
 
-            <Route path="/profile" render={(props)=>{
-              return <Profile {...props} currentUser={currentUser}/>
+            <Route path="/profile" render={(routeProps)=>{
+              return <Profile {...routeProps} currentUser={currentUser}/>
             }} />
 
             <Route path="/templates/newresume" component={NewResume} />

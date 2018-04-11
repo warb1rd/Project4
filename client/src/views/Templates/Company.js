@@ -1,22 +1,21 @@
 import React, {Component} from 'react';
 import { Form , Button, Grid } from 'semantic-ui-react';
 
-class Experience extends Component {
-
+class Company extends Component {
     render(){
         const {content} = this.props
 
         return(
             <Grid.Row>
             <Grid.Column>
-                <p>{content}</p>
+                <p>{content.company}</p>
             </Grid.Column>
             <Grid.Column>
-                <h4>EXPERIENCE</h4> 
+                <h3></h3> 
             </Grid.Column>
             </Grid.Row>
         )
     }
 }
                         
-export default Experience
+export default Company

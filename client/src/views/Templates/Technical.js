@@ -13,7 +13,7 @@ class Technical extends Component {
                     <p>{content}</p>
                 </Grid.Column>
                 <Grid.Column>
-                    <h3>TECHNICAL SKILLS</h3>                
+                    <h4>TECHNICAL SKILLS</h4>                
                 </Grid.Column>
             </Grid.Row>
         )
