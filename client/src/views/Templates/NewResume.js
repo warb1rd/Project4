@@ -5,8 +5,12 @@ import Summary from './Summary.js';
 import Technical from './Technical.js';
 import Projects from './Projects.js';
 import Description from './Description.js';
-
 import Experience from './Experience.js';
+import Company from './Company.js';
+import Details from './Details.js';
+import DateFrom from './DateFrom.js';
+
+
 import Education from './Education.js'
 import httpClient from '../../httpClient.js';
 // import Date from '../DatePicker.js'
@@ -136,10 +140,19 @@ class NewResume extends Component {
                                 <Summary content={summary}/>
                                 <Technical content={technical}/>  
                                 <Projects content={title}/>
-                                <Description content={description}/>
-                                
-                                <Experience content={company}/>                              
-                                <Education content={institution}/>              
+                                    <Description content={description}/>
+                                <Experience content={company}/> 
+                                    <JobTitle content={jobTitle}/>
+                                    <DateFrom content={dateFrom}/>                             
+                                    <DateTo content={dateTo}/>                             
+                                    <Description content={description}/>                             
+                                                                     
+                                <Education content={institution}/>
+                                    <Institution content={institution}/>                             
+                                    <Degree content={degree}/> 
+                                    <GraduationDate content={graduationDate}/>                             
+                                                                
+                                              
                             </Grid>
                             </div>
                 
