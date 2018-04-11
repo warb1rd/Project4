@@ -24,10 +24,17 @@ import GraduationDate from './GraduationDate.js';
 import httpClient from '../../httpClient.js';
 // import Date from '../DatePicker.js'
 
+
+const templateOptions = [
+    {text:'Cool', value: "Template1"},
+    {text:"Minimal", value: "Template2"},
+    {text:"Less Minimal", value: "Template3"},
+    {text:"Super Material Minimal", value: "Template4"}
+]
+
 class NewResume extends Component {
     state = {
-        templateName: "Template3",
-        // [{name:"Template1",name:"Template2", name:"Template3", name:"Template4"}]
+        templateName: "Template1",
         name: "",
         email: "",
         phone: "",
@@ -52,6 +59,13 @@ class NewResume extends Component {
                 [event.target.name]: event.target.value,
                 makePublic: !this.state.makePublic
 		})
+    }
+
+    handleLabelClick(event) {
+		this.setState({
+            templateName: [event.target.name]
+        })
+        console.log(event.target.name)
     }
 
     handleFormSubmit(evt) {
@@ -98,8 +112,9 @@ class NewResume extends Component {
         return (
             <div>
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">
+                
                 <Form.Group widths='equal'>
-                    <Dropdown placeholder='TEMPLATES' search selection options={templateName} />
+                    <Dropdown onClick={this.handleLabelClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
                     <Form.Field label='NAME' name='name'  control='input' />
                     <Form.Field label='EMAIL' name='email' control='input'/>
                     <Form.Field label='PHONE' name='phone' control='input' />
