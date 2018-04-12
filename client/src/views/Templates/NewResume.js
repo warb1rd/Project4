@@ -12,13 +12,13 @@ import Details from './Details.js';
 import StartDate from './StartDate.js';
 import EndDate from './EndDate.js';
 import Template1 from './Template1.js';
-import Template2 from './Template2.js'
-import Template3 from './Template3.js'
-import Template4 from './Template4.js'
+import Template2 from './Template2.js';
+import Template3 from './Template3.js';
+import Template4 from './Template4.js';
 
 import Education from './Education.js';
 import Institution from './Institution.js';
-import Degree from './Degree.js'
+import Degree from './Degree.js';
 import GraduationDate from './GraduationDate.js';
 
 import httpClient from '../../httpClient.js';
@@ -26,10 +26,10 @@ import httpClient from '../../httpClient.js';
 
 
 const templateOptions = [
-    {text:'Cool', value: "Template1"},
-    {text:"Minimal", value: "Template2"},
-    {text:"Less Minimal", value: "Template3"},
-    {text:"Super Material Minimal", value: "Template4"}
+    {text:'Minimal', value: "Template1"},
+    {text:"Lines", value: "Template2"},
+    {text:"Cool", value: "Template3"},
+    {text:"Rad", value: "Template4"}
 ]
 
 class NewResume extends Component {
@@ -63,9 +63,9 @@ class NewResume extends Component {
 
     handleLabelClick(event) {
 		this.setState({
-            templateName: [event.target.name]
+            templateName:event.target.textContent
         })
-        console.log(event.target.name)
+        console.log(event.target.textContent)
     }
 
     handleFormSubmit(evt) {
@@ -73,7 +73,7 @@ class NewResume extends Component {
         const {name, email, phone, summary, technical, title, description, company, 
             jobTitle, startDate, endDate, details, institution, degree, graduationDate, makePublic} = this.state
         const dataToSend = {
-            headers: {
+            header: {
                 name: name,
                 email: email,
                 phone: phone
@@ -114,7 +114,7 @@ class NewResume extends Component {
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">
                 
                 <Form.Group widths='equal'>
-                    <Dropdown onClick={this.handleLabelClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
+                    <Dropdown onChange={this.handleLabelClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
                     <Form.Field label='NAME' name='name'  control='input' />
                     <Form.Field label='EMAIL' name='email' control='input'/>
                     <Form.Field label='PHONE' name='phone' control='input' />
@@ -183,10 +183,10 @@ class NewResume extends Component {
                             </div> */}
 
                 { ({
-                    Template1: <Template1 content={this.state}  />,
-                    Template2: <Template2 content={this.state} />,
-                    Template3: <Template3 content={this.state} />,
-                    Template4: <Template4 content={this.state} />
+                    Minimal: <Template1 content={this.state}  />,
+                    Lines: <Template2 content={this.state} />,
+                    Cool: <Template3 content={this.state} />,
+                    Rad: <Template4 content={this.state} />
                 })[this.state.templateName] }
                 
             </div>

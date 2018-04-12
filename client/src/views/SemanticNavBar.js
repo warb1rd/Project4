@@ -4,7 +4,9 @@ import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui
 // import ModalSignUp from './ModalSignUp';
 
 class NavigationBar extends Component { 
-  state = { visible: false }
+  state = {
+      visible: false 
+    }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
 //show visibility and by clicking anywhere on the screen it should toggle back. User shouldnt have to click on sidebar to make nav invis again

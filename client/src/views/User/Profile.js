@@ -15,6 +15,12 @@ class Profile extends Component {
         modalOpen: false
     }
 
+    onClickHandler(){
+        httpClient.getResume(this.props.currentUser._id).then((apiResponse) => {
+        this.props.history.push('/resume')
+        })
+    }
+
     handleEditClick(){
         this.setState({
             modalOpen: true
@@ -53,7 +59,6 @@ class Profile extends Component {
                     return this.props.currentUser._id === r.user._id
                 })
             })
-            console.log(this.props.currentUser._id)
         })
     }
 
@@ -116,49 +121,50 @@ class Profile extends Component {
                 </Modal> 
            </div> */}
            
+           
         {resumes.map((r) => {
             return(
-                <div className="Template2">
+                <div className="Template3">                                 {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
                     <div className="header">
-                        <h2 className="name">{r.name}</h2>
-                        <p>{r.email}<span>||</span><span>{r.phone}</span></p>
+                        <h2 className="name">{r.header.name}</h2>
+                        <p>{r.header.email}<span>||</span><span>{r.header.phone}</span></p>
                     </div>
           
-                <div className="summary">
-                    <h3>SUMMARY</h3>
-                    <p>{r.summary}</p>
-                </div>
+                    <div className="summary">
+                        <h3>SUMMARY</h3>
+                        <p>{r.summary}</p>
+                    </div>
 
-                <div className="tech-skills">
-                    <h3>TECHNICAL SKILLS</h3>
-                    <p>{r.technical}</p>
-                </div>
+                    <div className="tech-skills">
+                        <h3>TECHNICAL SKILLS</h3>
+                        <p>{r.technical}</p>
+                    </div>
 
-                <div className="projects">
-                    <h3>PROJECTS</h3>
-                    <h4>{r.title}</h4>
-                    <p>{r.description}</p>
+                    <div className="projects">
+                        <h3>PROJECTS</h3>
+                        <h4>{r.projects.title}</h4>
+                        <p>{r.projects.description}</p>
+                    </div>
 
+                    <div className="experience">
+                        <h3>EXPERIENCE</h3>
+                        <p>{r.experience.company}</p>                    
+                        <h4>{r.experience.jobTitle} <span> {r.experience.startDate} to {r.experience.endDate}</span></h4>
+                        <p>{r.experience.details}</p>
+                        {/* <p>Company</p>                    
+                        <h4>Title <span>, 10 Jan 2010 </span></h4>
+                        <p>{r.phone}</p>                    */}
+                    </div>
+                    <div className="education">
+                        <h3>EDUCATION</h3>
+                            <h4>{r.education.institution}</h4>
+                                <p>{r.education.degree}<span> {r.education.graduationDate}</span></p>                      
+                    </div>
+                    <Button className="show-resume" onClick={this.onClickHandler.bind(this)}>SHOW</Button>      
                 </div>
-
-                <div className="experience">
-                    <h3>EXPERIENCE</h3>
-                    <p>{r.company}</p>                    
-                    <h4>{r.jobTitle} <span> {r.startDate} to {r.endDate}</span></h4>
-                    <p>{r.details}</p>
-                    {/* <p>Company</p>                    
-                    <h4>Title <span>, 10 Jan 2010 </span></h4>
-                    <p>{r.phone}</p>                    */}
-                </div>
-                <div className="education">
-                    <h3>EDUCATION</h3>
-                        <h4>{r.institution}</h4>
-                            <p>{r.degree}<span> {r.graduationDate}</span></p>                      
                 
-                </div>
-                </div>
              )
-
+             
         })} 
         </div>     
         )

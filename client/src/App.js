@@ -15,6 +15,7 @@ import LogOut from './views/User/LogOut'
 import Home from './views/Home';
 import Profile from './views/User/Profile.js'
 
+import Aresume from './views/Templates/Aresume.js'
 import Templates from './views/Templates/Templates.js'
 import NewResume from './views/Templates/NewResume.js'
 import Template1 from './views/Templates/Template1.js'
@@ -63,6 +64,8 @@ class App extends Component {
             <Route path="/profile" render={(routeProps)=>{
               return <Profile {...routeProps} currentUser={currentUser}/>
             }} />
+
+            <Route path="/resume" component={Aresume} />
 
             <Route path="/templates/newresume" component={NewResume} />
             <Route path="/templates/template4" component={Template4} />  
