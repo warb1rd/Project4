@@ -29,7 +29,7 @@ class NavigationBar extends Component {
                 {this.props.currentUser
                 ?(<span>
                     <Menu.Item name='templates' id="template">
-                        <Link to="/templates">TEMPLATES </Link>
+                        <Link to="/resumes">ALL RESUMES </Link>
                         <Icon name='block layout' />
                     </Menu.Item>
             

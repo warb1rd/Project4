@@ -120,7 +120,7 @@ class Profile extends Component {
             var graduationDate = new Date (r.education[0].graduationDate);
                       
             return(
-                <div className="Template1">                                 {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
+                <div className="Template3">                                                                  {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
                     <div className="header">
                         <h2 className="name">{r.header.name}</h2>
                         <p>{r.header.email}<span>||</span><span>{r.header.phone}</span></p>
@@ -145,7 +145,7 @@ class Profile extends Component {
                     <div className="experience">
                         <h3>EXPERIENCE</h3>
                         <p>{r.experience[0].company}</p>                    
-                        <h4>{r.experience[0].jobTitle} <span> {startDate.toLocaleDateString()} to {endDate.toLocaleDateString()}</span></h4>
+                        <h4>{r.experience[0].jobTitle} <span> {startDate && startDate.toLocaleDateString()} to {endDate && endDate.toLocaleDateString()}</span></h4>
                         {/* startDate.toLocaleDateString('en-US') */}
                         <p>{r.experience[0].details}</p>
                         {/* <p>Company</p>                    
@@ -155,7 +155,7 @@ class Profile extends Component {
                     <div className="education">
                         <h3>EDUCATION</h3>
                             <h4>{r.education[0].institution}</h4>
-                                <p>{r.education[0].degree} <span> {graduationDate.toLocaleDateString()}</span></p>                      
+                                <p>{r.education[0].degree} <span> {graduationDate && graduationDate.toLocaleDateString()}</span></p>                      
                     </div>
                     <Button className="show-resume" onClick={this.handleResumeClick.bind(this)}>SHOW</Button>
                     <Button className="show-resume" onClick={this.handleResumeEditClick.bind(this)}>EDIT</Button>      
@@ -170,8 +170,6 @@ class Profile extends Component {
         )
     }
 }
-
-
 
 export default Profile
 

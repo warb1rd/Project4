@@ -16,7 +16,7 @@ import Home from './views/Home';
 import Profile from './views/User/Profile.js'
 import EditResume from './views/Templates/editResume.js'
 import Aresume from './views/Templates/Aresume.js'
-// import Templates from './views/Templates/Templates.js'
+import PublicResumes from './views/Templates/PublicResumes.js'
 import NewResume from './views/Templates/NewResume.js'
 import Template1 from './views/Templates/Template1.js'
 import Template2 from './views/Templates/Template2.js'
@@ -66,6 +66,8 @@ class App extends Component {
               return <Profile {...routeProps} currentUser={currentUser}/>
             }} />
 
+            <Route path="/resumes" component={PublicResumes} />
+            
             <Route path="/resume" component={Aresume} />
             <Route path="/editresume" render={(routeProps)=>{
               return currentUser
