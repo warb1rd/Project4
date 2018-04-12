@@ -14,7 +14,7 @@ mongoose.connect(MONGODB_URI, (err) => {
 	console.log(err || `Connected to MongoDB.`)
 })
 
-// app.use(express.static(`${__dirname}/client/build`))											//This tells express where all static assets are stored (everything pertaining to front end)
+app.use(express.static(`${__dirname}/client/build`))											//This tells express where all static assets are stored (everything pertaining to front end)
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
@@ -25,9 +25,9 @@ app.get('/api', (req, res) => {
 app.use('/api/users', usersRoutes)
 app.use("/api/resumes", resumesRoutes)
 
-// app.use('*', (req, res) => {
-// 	res.sendFile(`${__dirname}/client/build/index.html`)										//If you make a get request to anything else but /api/users and api/bars, send the index.html file.
-// })
+app.use('*', (req, res) => {
+	res.sendFile(`${__dirname}/client/build/index.html`)										//If you make a get request to anything else but /api/users and api/resumes, send the index.html file.
+})
 
 app.listen(PORT, (err) => {
 	console.log(err || `Server running on port ${PORT}.`)

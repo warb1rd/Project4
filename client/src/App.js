@@ -66,14 +66,14 @@ class App extends Component {
               return <Profile {...routeProps} currentUser={currentUser}/>
             }} />
 
+            <Route path="/resumes/:id/edit" render={(routeProps)=>{
+              return currentUser
+              ? <EditResume currentUser={currentUser} {...routeProps} />
+              : <Redirect to="/login"/>
+            }} />
             <Route path="/resumes" component={PublicResumes} />
             
             <Route path="/resume" component={Aresume} />
-            <Route path="/editresume" render={(routeProps)=>{
-              return currentUser
-              ? <EditResume currentUser={currentUser} routeProps={routeProps} />
-              : <Redirect to="/login"/>
-            }} />
 
             <Route path="/templates/newresume" component={NewResume} />
             <Route path="/templates/template4" component={Template4} />  

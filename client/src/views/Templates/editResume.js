@@ -53,28 +53,27 @@ class EditResume extends Component {
     }
 
     componentDidMount(){
-        httpClient.getResume(this.props.routeProps.match.params.id).then((apiResponse)=>{
+        httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
             
-            // const {header,experience, projects, education,name, email, phone, summary, technical, title, description, company, 
-            //     jobTitle, startDate, endDate, details, institution, degree, graduationDate, templateName} = apiResponse.data
-                console.log(apiResponse.data)
+            const {header,experience, projects, education,name, email, phone, summary, technical, title, description, company, 
+                jobTitle, startDate, endDate, details, institution, degree, graduationDate, templateName} = apiResponse.data
             this.setState({
-                // templateName: templateName,
-                // name: header.name,
-                // email: header.email,
-                // phone: header.phone,
-                // summary: summary,
-                // technical: technical,
-                // title: projects[0].title,
-                // description: projects[0].description,
-                // company: experience[0].company,
-                // jobTitle: experience[0].jobTitle,
-                // startDate: experience[0].startDate, 
-                // endDate: experience[0].endDate,         
-                // details: experience[0].details,
-                // institution: education[0].institution,
-                // degree: education[0].degree,
-                // graduationDate: education[0].graduationDate
+                templateName: templateName,
+                name: header.name,
+                email: header.email,
+                phone: header.phone,
+                summary: summary,
+                technical: technical,
+                title: projects[0].title,
+                description: projects[0].description,
+                company: experience[0].company,
+                jobTitle: experience[0].jobTitle,
+                startDate: experience[0].startDate, 
+                endDate: experience[0].endDate,         
+                details: experience[0].details,
+                institution: education[0].institution,
+                degree: education[0].degree,
+                graduationDate: education[0].graduationDate
             })
         })
     }
@@ -125,7 +124,7 @@ class EditResume extends Component {
             makePublic: makePublic
         }
         console.log(dataToSend)
-        httpClient.createResume(dataToSend).then((apiResponse) => {
+        httpClient.updateResume(this.props.match.params.id, dataToSend).then((apiResponse) => {
             this.props.history.push("/profile")
             console.log(apiResponse)
         })
@@ -133,6 +132,12 @@ class EditResume extends Component {
 
     //use component did mount? history.goBack
    render(){  
+    const templateOptions = [
+        {text:'Minimal', value: "Template1"},
+        {text:"Lines", value: "Template2"},
+        {text:"Cool", value: "Template3"},
+        {text:"Rad", value: "Template4"}
+    ]
         const {name, email, phone, summary, technical, title, description, company, 
             jobTitle, startDate, endDate, details, institution, degree, graduationDate} = this.state
         return (
@@ -172,9 +177,7 @@ class EditResume extends Component {
                     <Form.Field label='.' placeholder='Date' control='input' type='date' name='graduationDate' rows='2' value={graduationDate}/>
                 </Form.Group>
                 
-                <Form.Field control='button'>
-                    SUBMIT
-                </Form.Field>
+                <Button> SAVE RESUME </Button>
 
                 <Form.Group grouped>                   
                     <Form.Field>

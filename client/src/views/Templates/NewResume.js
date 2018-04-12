@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form, Checkbox, Dropdown } from 'semantic-ui-react';
+import { Form, Checkbox, Dropdown, Button } from 'semantic-ui-react';
 
 // import Summary from './Summary.js';
 // import Technical from './Technical.js';
@@ -56,7 +56,7 @@ class NewResume extends Component {
 		this.setState({
                 ...this.state,
                 [event.target.name]: event.target.value,
-                makePublic: !this.state.makePublic
+                makePublic: true
 		})
     }
 
@@ -145,13 +145,11 @@ class NewResume extends Component {
                         <Form.Field label='.' placeholder='Date' control='input' type='date' name='graduationDate' rows='2' />
                     </Form.Group>
                     
-                    <Form.Field control='button'>
-                        SUBMIT
-                    </Form.Field>
+                    <Button> SAVE RESUME </Button>
 
                     <Form.Group grouped>                   
                         <Form.Field>
-                            <Checkbox label="Do you want to make your resume searchable?" onChange={this.handleChange.bind(this)}/>
+                            <Checkbox label="Make your resume searchable." onChange={this.handleChange.bind(this)}/>
                         </Form.Field>
                     </Form.Group>
                 </Form>          

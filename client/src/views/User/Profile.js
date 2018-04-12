@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Image, Modal, Card, Form } from 'semantic-ui-react';
 import httpClient from '../../httpClient.js'
+import { Link } from 'react-router-dom'
 
 class Profile extends Component {
     state = {
@@ -145,7 +146,7 @@ class Profile extends Component {
                     <div className="experience">
                         <h3>EXPERIENCE</h3>
                         <p>{r.experience[0].company}</p>                    
-                        <h4>{r.experience[0].jobTitle} <span> {startDate && startDate.toLocaleDateString()} to {endDate && endDate.toLocaleDateString()}</span></h4>
+                        <p>{r.experience[0].jobTitle} <span> {startDate && startDate.toLocaleDateString()} to {endDate && endDate.toLocaleDateString()}</span></p>
                         {/* startDate.toLocaleDateString('en-US') */}
                         <p>{r.experience[0].details}</p>
                         {/* <p>Company</p>                    
@@ -158,7 +159,7 @@ class Profile extends Component {
                                 <p>{r.education[0].degree} <span> {graduationDate && graduationDate.toLocaleDateString()}</span></p>                      
                     </div>
                     <Button className="show-resume" onClick={this.handleResumeClick.bind(this)}>SHOW</Button>
-                    <Button className="show-resume" onClick={this.handleResumeEditClick.bind(this)}>EDIT</Button>      
+                    <Link className="ui button show-resume show-resume" to={`/resumes/${r._id}/edit`}>EDIT</Link>      
                     <Button className="show-resume" onClick={this.handleResumeDelete.bind(this, r._id)}>DELETE</Button>      
                           
                 </div>

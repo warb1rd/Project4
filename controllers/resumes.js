@@ -22,9 +22,12 @@ module.exports = {
 	},
 
     update: (req, res) => {
-        Resume.findById(req.params.id, req.body, (err, resume) => {
+        Resume.findById(req.params.id, (err, resume) => {
+            console.log("RESUME:")
+            console.log(resume)
+
             Object.assign(resume, req.body)
-            Resume.save((err, updatedResume) => {
+            resume.save((err, updatedResume) => {
                 res.json({success: true, message: "Resume updated", Resume: updatedResume})
             })
         })
