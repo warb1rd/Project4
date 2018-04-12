@@ -23,6 +23,20 @@ class Profile extends Component {
         this.props.history.push('/editresume')
     }
 
+    handleResumeDelete(id){
+        httpClient.deleteResume(id).then((apiResponse) => {
+            console.log(apiResponse)
+            this.setState({
+                resumes: this.state.resumes.filter((r) => {
+                    console.log(r._id)
+                    console.log(id)
+                    return r._id !== id  
+                })
+                
+            })
+        })
+    }
+
     handleEditClick(){
         this.setState({
             modalOpen: true
@@ -104,8 +118,8 @@ class Profile extends Component {
             return(
                 <div className="Template1">                                 {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
                     <div className="header">
-                        <h2 className="name">{r.name}</h2>
-                        <p>{r.email}<span>||</span><span>{r.phone}</span></p>
+                        <h2 className="name">{r.header.name}</h2>
+                        <p>{r.header.email}<span>||</span><span>{r.header.phone}</span></p>
                     </div>
           
                     <div className="summary">
@@ -141,6 +155,7 @@ class Profile extends Component {
                     </div>
                     <Button className="show-resume" onClick={this.handleResumeClick.bind(this)}>SHOW</Button>
                     <Button className="show-resume" onClick={this.handleResumeEditClick.bind(this)}>EDIT</Button>      
+                    <Button className="show-resume" onClick={this.handleResumeDelete.bind(this, r._id)}>DELETE</Button>      
                           
                 </div>
                 

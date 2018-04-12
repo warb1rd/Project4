@@ -7,7 +7,7 @@ class Template2 extends Component {
             <div className="Template2">
                 <div className="header">
                     <h2 className="name" value="NAME">{content.name}</h2>
-                    <p>{content.email}<span>||</span><span>{content.phone}</span></p>
+                    <p> {content.email} <span> || </span><span> {content.phone} </span></p>
                 </div>
                 
                 <div className="summary">
@@ -23,8 +23,7 @@ class Template2 extends Component {
                 <div className="projects">
                     <h3>PROJECTS</h3>
                     <h4>{content.title}</h4>
-                    <p>{content.description}</p>
-
+                   <p>{content.description}</p>
                 </div>
 
                 <div className="experience">

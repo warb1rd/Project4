@@ -71,6 +71,9 @@ httpClient.getResume = function (id){
     return this({method: "get", url: `/api/resumes/${id}`})
 }
 
+httpClient.deleteResume = function (id){
+    return this({method: "delete", url: `/api/resumes/${id}`})
+}
 
 httpClient.defaults.headers.common.token = httpClient.getToken()                                        
 
