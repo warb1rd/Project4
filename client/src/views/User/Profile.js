@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Header, Image, Modal, Card, Form, Grid } from 'semantic-ui-react';
+import { Button, Image, Modal, Card, Form } from 'semantic-ui-react';
 import httpClient from '../../httpClient.js'
 
 class Profile extends Component {
@@ -89,7 +89,7 @@ class Profile extends Component {
                         header={fields.name}
                         meta={fields.email}
                         extra=
-                        {<Modal className="Modal" closeOnDocumentClick={true} className="ModalProfile" trigger=
+                        {<Modal closeOnDocumentClick={true} className="ModalProfile" trigger=
                             {<Button onClick=
                                 {this.handleEditClick.bind(this)} open={modalOpen} >EDIT</Button>
                             }>
@@ -113,8 +113,7 @@ class Profile extends Component {
                 </div>  
            
         {resumes.map((r) => {
-                    const {template} = this.props
-
+            console.log(r)
             return(
                 <div className="Template1">                                 {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
                     <div className="header">
@@ -171,95 +170,98 @@ class Profile extends Component {
 
 export default Profile
 
-{/* <Grid columns={2} divided>
+
+
+
+// {/* <Grid columns={2} divided>
             
-            <Grid.Row>
-                <Grid.Column>
-                    <p>{r.summary}</p>
-                </Grid.Column>
-                <Grid.Column>
-                    <h3>SUMMARY</h3>                
-                </Grid.Column>
-                <Grid.Column>
-                    <p></p>
-                </Grid.Column>
-            </Grid.Row>
+//             <Grid.Row>
+//                 <Grid.Column>
+//                     <p>{r.summary}</p>
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <h3>SUMMARY</h3>                
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <p></p>
+//                 </Grid.Column>
+//             </Grid.Row>
 
-            <Grid.Row>
-                <Grid.Column>
-                    <p>{r.technical}</p>
-                </Grid.Column>
-                <Grid.Column>
-                    <h3>TECHNICAL SKILLS</h3>                
-                </Grid.Column>
-                <Grid.Column>
-                    <p></p>
-                </Grid.Column>
-            </Grid.Row>
+//             <Grid.Row>
+//                 <Grid.Column>
+//                     <p>{r.technical}</p>
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <h3>TECHNICAL SKILLS</h3>                
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <p></p>
+//                 </Grid.Column>
+//             </Grid.Row>
 
-            <Grid.Row>
-                <Grid.Column>
-                    <p>{r.projects.title}</p>
-                </Grid.Column>
-                <Grid.Column>
-                    <h3>PROJECTS</h3>  
-                </Grid.Column>
-                <Grid.Column>
-                    <p></p>
-                </Grid.Column>
-            </Grid.Row>
+//             <Grid.Row>
+//                 <Grid.Column>
+//                     <p>{r.projects.title}</p>
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <h3>PROJECTS</h3>  
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <p></p>
+//                 </Grid.Column>
+//             </Grid.Row>
 
-            <Grid.Row>
-                <Grid.Column>
-                    <p></p>
-                </Grid.Column>
-                <Grid.Column>
-                    <h3>EXPERIENCE</h3> 
-                    <h4>Company1</h4> <br/>
-                    <h4>Company2</h4> <br/>
+//             <Grid.Row>
+//                 <Grid.Column>
+//                     <p></p>
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <h3>EXPERIENCE</h3> 
+//                     <h4>Company1</h4> <br/>
+//                     <h4>Company2</h4> <br/>
                 
-                </Grid.Column>
-                <Grid.Column>
-                    <p></p>
-                </Grid.Column>
-            </Grid.Row>
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <p></p>
+//                 </Grid.Column>
+//             </Grid.Row>
             
-            <Grid.Row>
-                <Grid.Column>
-                    <p></p>
-                </Grid.Column>
-                <Grid.Column>
-                    <h3>EDUCATION</h3> 
-                    <h4>School1</h4> <br/>
-                    <h4>School2</h4> <br/>               
-                </Grid.Column>
-                <Grid.Column>
-                    <p></p>
-                </Grid.Column>
-            </Grid.Row>
-        </Grid> */}
+//             <Grid.Row>
+//                 <Grid.Column>
+//                     <p></p>
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <h3>EDUCATION</h3> 
+//                     <h4>School1</h4> <br/>
+//                     <h4>School2</h4> <br/>               
+//                 </Grid.Column>
+//                 <Grid.Column>
+//                     <p></p>
+//                 </Grid.Column>
+//             </Grid.Row>
+//         </Grid> */}
 
-        {/* <div>         
+//         {/* <div>         
 
-                /* <Modal className="ModalProfile" trigger={<Card className="Profile-card"
-                    image='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg'
-                    header={this.state.fields.name}
-                    meta={this.state.fields.email}
-                    extra={<Button onClick={this.handleEditClick.bind(this)}>EDIT</Button>}
-                    />} open={modalOpen} > */
-                  /* <Modal.Header>EDIT YOUR PROFILE</Modal.Header>
-                  <Modal.Content image>
-                    <Image wrapped size='small' src='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg' />
-                    <Form onSubmit={this.handleSubmit.bind(this)} onChange={this.handleChange.bind(this)}>
-                        <Form.Group>
-                            <Form.Input type="text" value={fields.name} name='name' />
-                            <Form.Input type="text" placeholder='Email' name='email' value={fields.email} />
-                            <Form.Input type="password" placeholder='Password' name='password' />
-                            <Button>Submit</Button>
-                        </Form.Group>
-                    </Form>
+//                 /* <Modal className="ModalProfile" trigger={<Card className="Profile-card"
+//                     image='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg'
+//                     header={this.state.fields.name}
+//                     meta={this.state.fields.email}
+//                     extra={<Button onClick={this.handleEditClick.bind(this)}>EDIT</Button>}
+//                     />} open={modalOpen} > */
+//                   /* <Modal.Header>EDIT YOUR PROFILE</Modal.Header>
+//                   <Modal.Content image>
+//                     <Image wrapped size='small' src='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg' />
+//                     <Form onSubmit={this.handleSubmit.bind(this)} onChange={this.handleChange.bind(this)}>
+//                         <Form.Group>
+//                             <Form.Input type="text" value={fields.name} name='name' />
+//                             <Form.Input type="text" placeholder='Email' name='email' value={fields.email} />
+//                             <Form.Input type="password" placeholder='Password' name='password' />
+//                             <Button>Submit</Button>
+//                         </Form.Group>
+//                     </Form>
                     
-                  </Modal.Content>
-                </Modal> 
-           </div> */}
+//                   </Modal.Content>
+//                 </Modal> 
+//            </div> */}
            

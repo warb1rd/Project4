@@ -1,25 +1,27 @@
 import React, {Component} from 'react';
-import { Form , Grid, Checkbox, Menu, Dropdown } from 'semantic-ui-react';
-// import Template4 from './Template4.js';
-import Summary from './Summary.js';
-import Technical from './Technical.js';
-import Projects from './Projects.js';
-import Description from './Description.js';
-import Experience from './Experience.js';
-import Company from './Company.js';
-import JobTitle from './JobTitle.js'
-import Details from './Details.js';
-import StartDate from './StartDate.js';
-import EndDate from './EndDate.js';
+import { Form , Checkbox, Dropdown } from 'semantic-ui-react';
+
+// import Summary from './Summary.js';
+// import Technical from './Technical.js';
+// import Projects from './Projects.js';
+// import Description from './Description.js';
+// import Experience from './Experience.js';
+// import Company from './Company.js';
+// import JobTitle from './JobTitle.js'
+// import Details from './Details.js';
+// import StartDate from './StartDate.js';
+// import EndDate from './EndDate.js';
+// import Education from './Education.js';
+// import Institution from './Institution.js';
+// import Degree from './Degree.js';
+// import GraduationDate from './GraduationDate.js';
+
 import Template1 from './Template1.js';
 import Template2 from './Template2.js';
 import Template3 from './Template3.js';
 import Template4 from './Template4.js';
 
-import Education from './Education.js';
-import Institution from './Institution.js';
-import Degree from './Degree.js';
-import GraduationDate from './GraduationDate.js';
+
 
 import httpClient from '../../httpClient.js';
 // import Date from '../DatePicker.js'
@@ -86,7 +88,7 @@ class EditResume extends Component {
             }],
             experience: [{
                 company: company,
-                jobTitle: title,
+                jobTitle: jobTitle,
                 startDate: startDate, 
                 endDate: endDate,
                 details: details,
@@ -108,7 +110,7 @@ class EditResume extends Component {
     //use component did mount? history.goBack
    render(){  
         const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, startDate, endDate, details, institution, degree, graduationDate, templateName} = this.state
+            jobTitle, startDate, endDate, details, institution, degree, graduationDate} = this.state
         return (
             <div>
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
@@ -133,17 +135,17 @@ class EditResume extends Component {
                 </Form.Group>
 
                 <Form.Group widths='equal'>
-                    <Form.Field label='EXPERIENCE' placeholder='Company' name='company' control='input' rows='1' />
-                    <Form.Field label='.' placeholder='Job Title' name='jobTitle' control='input' rows='2' />
-                    <Form.Field label='From' placeholder='Date from' name='startDate' type='date' control='input'  rows='2' />
-                    <Form.Field label='To' placeholder='Date to' name='endDate' type='date' control='input' rows='2' />
-                    <Form.Field label='.' placeholder='Details' name='details' control='textarea' rows='2' />                  
+                    <Form.Field label='EXPERIENCE' placeholder='Company' name='company' control='input' rows='1' value={company}/>
+                    <Form.Field label='.' placeholder='Job Title' name='jobTitle' control='input' rows='2' value={jobTitle}/>
+                    <Form.Field label='From' placeholder='Date from' name='startDate' type='date' control='input'  rows='2' value={startDate} />
+                    <Form.Field label='To' placeholder='Date to' name='endDate' type='date' control='input' rows='2' value={endDate}/>
+                    <Form.Field label='.' placeholder='Details' name='details' control='textarea' rows='2' value={details}/>                  
                 </Form.Group>
                 
                 <Form.Group widths='equal'>
-                    <Form.Field label='EDUCATION' placeholder='Institution' name='institution' control='input' rows='1' />
-                    <Form.Field label='.' placeholder='Degree' control='input' name='degree' rows='2' />
-                    <Form.Field label='.' placeholder='Date' control='input' type='date' name='graduationDate' rows='2' />
+                    <Form.Field label='EDUCATION' placeholder='Institution' name='institution' control='input' rows='1' value={institution}/>
+                    <Form.Field label='.' placeholder='Degree' control='input' name='degree' rows='2' value={degree}/>
+                    <Form.Field label='.' placeholder='Date' control='input' type='date' name='graduationDate' rows='2' value={graduationDate}/>
                 </Form.Group>
                 
                 <Form.Field control='button'>

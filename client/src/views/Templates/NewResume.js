@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-import { Form , Grid, Checkbox, Menu, Dropdown } from 'semantic-ui-react';
+import { Form , Checkbox, Dropdown } from 'semantic-ui-react';
 
-import Summary from './Summary.js';
-import Technical from './Technical.js';
-import Projects from './Projects.js';
-import Description from './Description.js';
-import Experience from './Experience.js';
-import Company from './Company.js';
-import JobTitle from './JobTitle.js'
-import Details from './Details.js';
-import StartDate from './StartDate.js';
-import EndDate from './EndDate.js';
+// import Summary from './Summary.js';
+// import Technical from './Technical.js';
+// import Projects from './Projects.js';
+// import Description from './Description.js';
+// import Experience from './Experience.js';
+// import Company from './Company.js';
+// import JobTitle from './JobTitle.js'
+// import Details from './Details.js';
+// import StartDate from './StartDate.js';
+// import EndDate from './EndDate.js';
 
-import Education from './Education.js';
-import Institution from './Institution.js';
-import Degree from './Degree.js';
-import GraduationDate from './GraduationDate.js';
+// import Education from './Education.js';
+// import Institution from './Institution.js';
+// import Degree from './Degree.js';
+// import GraduationDate from './GraduationDate.js';
 
 import Template1 from './Template1.js';
 import Template2 from './Template2.js';
@@ -85,7 +85,7 @@ class NewResume extends Component {
             }],
             experience: [{
                 company: company,
-                jobTitle: title,
+                jobTitle: jobTitle,
                 startDate: startDate, 
                 endDate: endDate,
                 details: details,
@@ -105,9 +105,9 @@ class NewResume extends Component {
     }
 
    render(){  
-        const {name, email, phone, summary, technical, title, 
-            description, company, jobTitle, startDate, endDate, 
-            details, institution, degree, graduationDate, templateName} = this.state
+        // const {name, email, phone, summary, technical, title, 
+        //     description, company, jobTitle, startDate, endDate, 
+        //     details, institution, degree, graduationDate, templateName} = this.state
         return (
             <div>
                 <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
@@ -171,27 +171,27 @@ class NewResume extends Component {
 export default NewResume
 
 
-  {/* <div className='Template4'>
-                            <div className='header'>
-                                <h2 className='name'>{name}</h2>
-                                <p>{email}<span> || </span><span>{phone}</span></p>
-                            </div>
+//   {/* <div className='Template4'>
+//                             <div className='header'>
+//                                 <h2 className='name'>{name}</h2>
+//                                 <p>{email}<span> || </span><span>{phone}</span></p>
+//                             </div>
                                     
-                            <Grid columns={2} divided> 
-                                <Summary content={summary}/>
-                                <Technical content={technical}/>  
-                                <Projects content={title}/>
-                                    <Description content={description}/>                             
+//                             <Grid columns={2} divided> 
+//                                 <Summary content={summary}/>
+//                                 <Technical content={technical}/>  
+//                                 <Projects content={title}/>
+//                                     <Description content={description}/>                             
                                 
-                                <Experience content={company}/> 
-                                    <JobTitle content={jobTitle}/>
-                                    <StartDate content={startDate}/> - <EndDate content={endDate}/>       
-                                    <Details content={details}/>
+//                                 <Experience content={company}/> 
+//                                     <JobTitle content={jobTitle}/>
+//                                     <StartDate content={startDate}/> - <EndDate content={endDate}/>       
+//                                     <Details content={details}/>
                                                           
                                                                      
-                                <Education content={institution}/>
-                                    <Degree content={degree}/> 
-                                    <GraduationDate content={graduationDate}/>                                                                                            
+//                                 <Education content={institution}/>
+//                                     <Degree content={degree}/> 
+//                                     <GraduationDate content={graduationDate}/>                                                                                            
                                               
-                            </Grid>
-                            </div> */}
+//                             </Grid>
+//                             </div> */}

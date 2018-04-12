@@ -1,8 +1,8 @@
 body {
   font-weight: lighter;
-  /* background-color: #222629;  */
+  background-color: #222629; 
   font-family: 'Montserrat', sans-serif;
-  /* color: #ffffffe6; */
+  color: #ffffffe6;
 }
 
 div.ui.basic.segment, .pushable{
@@ -81,7 +81,7 @@ div .ui.card{
   margin-top: 20px;
 }
 
-.field label {
+div .field label {
   color: #ffffffe6;
 }
 

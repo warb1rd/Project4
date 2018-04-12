@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import './stylesheets/templates.css'
 import 'semantic-ui-css/semantic.min.css';
@@ -16,7 +16,7 @@ import Home from './views/Home';
 import Profile from './views/User/Profile.js'
 import EditResume from './views/Templates/editResume.js'
 import Aresume from './views/Templates/Aresume.js'
-import Templates from './views/Templates/Templates.js'
+// import Templates from './views/Templates/Templates.js'
 import NewResume from './views/Templates/NewResume.js'
 import Template1 from './views/Templates/Template1.js'
 import Template2 from './views/Templates/Template2.js'
@@ -43,7 +43,7 @@ class App extends Component {
   }
   
   render() {
-    const {currentUser, fields} = this.state
+    const {currentUser} = this.state
 
     return (
       <div className="App">
@@ -73,7 +73,7 @@ class App extends Component {
             <Route path="/templates/template3" component={Template3} />  
             <Route path="/templates/template2" component={Template2} />             
             <Route path="/templates/template1" component={Template1} />
-            <Route path="/templates" component={Templates} />  
+            {/* <Route path="/templates" component={Templates} />   */}
             
             <Route path="/" component={Home} />
 
