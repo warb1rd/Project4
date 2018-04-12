@@ -14,7 +14,7 @@ import LogIn from './views/User/LogIn'
 import LogOut from './views/User/LogOut'
 import Home from './views/Home';
 import Profile from './views/User/Profile.js'
-
+import EditResume from './views/Templates/editResume.js'
 import Aresume from './views/Templates/Aresume.js'
 import Templates from './views/Templates/Templates.js'
 import NewResume from './views/Templates/NewResume.js'
@@ -66,6 +66,7 @@ class App extends Component {
             }} />
 
             <Route path="/resume" component={Aresume} />
+            <Route path="/editresume" component={EditResume} />
 
             <Route path="/templates/newresume" component={NewResume} />
             <Route path="/templates/template4" component={Template4} />  

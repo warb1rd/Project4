@@ -32,7 +32,7 @@ const templateOptions = [
     {text:"Rad", value: "Template4"}
 ]
 
-class NewResume extends Component {
+class EditResume extends Component {
     state = {
         templateName: "Template1",
         name: "",
@@ -114,22 +114,22 @@ class NewResume extends Component {
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
                 <Form.Group widths='equal'>
                     <Dropdown onChange={this.handleLabelClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
-                    <Form.Field label='NAME' name='name'  control='input' />
-                    <Form.Field label='EMAIL' name='email' control='input'/>
-                    <Form.Field label='PHONE' name='phone' control='input' />
+                    <Form.Field label='NAME' name='name'  control='input' value={name}/>
+                    <Form.Field label='EMAIL' name='email' control='input' value={email}/>
+                    <Form.Field label='PHONE' name='phone' control='input'  value={phone}/>
                 </Form.Group>
                 
                 <Form.Group>
-                    <Form.Field label='SUMMARY' name='summary' control='textarea' rows='3'/>
+                    <Form.Field label='SUMMARY' name='summary' control='textarea' rows='3' value={summary}/>
                 </Form.Group>
                 
                 <Form.Group>
-                    <Form.Field label='TECHNICAL SKILLS' name='technical' control='input'/>
+                    <Form.Field label='TECHNICAL SKILLS' name='technical' control='input'  value={technical}/>
                 </Form.Group>
                     
                 <Form.Group widths='equal'>
-                    <Form.Field label='PROJECTS' placeholder='Title' name='title'control='input' rows='1' />
-                    <Form.Field label='.' placeholder='Description' name='description' control='textarea' rows='2' />
+                    <Form.Field label='PROJECTS' placeholder='Title' name='title'control='input' rows='1'  value={title}/>
+                    <Form.Field label='.' placeholder='Description' name='description' control='textarea' rows='2'  value={description} />
                 </Form.Group>
 
                 <Form.Group widths='equal'>
@@ -156,12 +156,12 @@ class NewResume extends Component {
                     </Form.Field>
                 </Form.Group>
             </Form>          
-                      
+
                 { ({
-                    Minimal: <Template1 template={templateOptions} content={this.state}  />,
-                    Lines: <Template2 template={templateOptions} content={this.state} />,
-                    Cool: <Template3 template={templateOptions} content={this.state} />,
-                    Rad: <Template4 template={templateOptions} content={this.state} />
+                    Minimal: <Template1 content={this.state}  />,
+                    Lines: <Template2 content={this.state} />,
+                    Cool: <Template3 content={this.state} />,
+                    Rad: <Template4 content={this.state} />
                 })[this.state.templateName] }
                 
             </div>
@@ -169,30 +169,4 @@ class NewResume extends Component {
     }
 }
 
-export default NewResume
-
-
-  {/* <div className='Template4'>
-                            <div className='header'>
-                                <h2 className='name'>{name}</h2>
-                                <p>{email}<span> || </span><span>{phone}</span></p>
-                            </div>
-                                    
-                            <Grid columns={2} divided> 
-                                <Summary content={summary}/>
-                                <Technical content={technical}/>  
-                                <Projects content={title}/>
-                                    <Description content={description}/>                             
-                                
-                                <Experience content={company}/> 
-                                    <JobTitle content={jobTitle}/>
-                                    <StartDate content={startDate}/> - <EndDate content={endDate}/>       
-                                    <Details content={details}/>
-                                                          
-                                                                     
-                                <Education content={institution}/>
-                                    <Degree content={degree}/> 
-                                    <GraduationDate content={graduationDate}/>                                                                                            
-                                              
-                            </Grid>
-                            </div> */}
+export default EditResume
