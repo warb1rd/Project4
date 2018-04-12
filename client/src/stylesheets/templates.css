@@ -32,7 +32,9 @@
   padding: 20px;
   text-align: justify;
   float: right;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  color: grey; }
   .Template2 .header {
     text-align: center;
     margin-bottom: 10px; }
@@ -55,7 +57,9 @@
   padding: 20px;
   text-align: justify;
   float: right;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  color: grey; }
   .Template3 .header {
     text-align: center;
     margin-bottom: 10px; }
@@ -77,7 +81,9 @@
   padding: 20px;
   text-align: justify;
   float: right;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  color: grey; }
   .Template4 .header {
     text-align: center;
     margin-bottom: 10px;

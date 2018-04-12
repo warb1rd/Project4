@@ -9,7 +9,7 @@ div.ui.basic.segment, .pushable{
   margin: 0;
   padding: 20px;
   border-radius: none;
-  /* background-color: #222629; */
+  background-color: #222629;
 }
 .ui form .Form-container{
   display: inline-block;
@@ -81,7 +81,7 @@ div .ui.card{
   margin-top: 20px;
 }
 
-div .field label {
+.field label {
   color: #ffffffe6;
 }
 

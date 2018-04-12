@@ -71,6 +71,10 @@ httpClient.getResume = function (id){
     return this({method: "get", url: `/api/resumes/${id}`})
 }
 
+httpClient.updateResume = function (id, fields){
+    return this({method: "patch", url: `/api/resumes/${id}`, data: fields})
+}
+
 httpClient.deleteResume = function (id){
     return this({method: "delete", url: `/api/resumes/${id}`})
 }

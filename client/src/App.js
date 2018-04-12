@@ -22,6 +22,7 @@ import Template1 from './views/Templates/Template1.js'
 import Template2 from './views/Templates/Template2.js'
 import Template3 from './views/Templates/Template3.js'
 import Template4 from './views/Templates/Template4.js'
+import Redirect from 'react-router-dom/Redirect';
 
 class App extends Component {
   state = { 
@@ -66,7 +67,11 @@ class App extends Component {
             }} />
 
             <Route path="/resume" component={Aresume} />
-            <Route path="/editresume" component={EditResume} />
+            <Route path="/editresume" render={(routeProps)=>{
+              return currentUser
+              ? <EditResume currentUser={currentUser} routeProps={routeProps} />
+              : <Redirect to="/login"/>
+            }} />
 
             <Route path="/templates/newresume" component={NewResume} />
             <Route path="/templates/template4" component={Template4} />  

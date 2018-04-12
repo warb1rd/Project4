@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form , Checkbox, Dropdown } from 'semantic-ui-react';
+import { Form, Checkbox, Dropdown } from 'semantic-ui-react';
 
 // import Summary from './Summary.js';
 // import Technical from './Technical.js';

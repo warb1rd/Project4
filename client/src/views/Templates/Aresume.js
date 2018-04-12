@@ -9,10 +9,10 @@ const Resume1 = () => {
     return(
         <div>
             {({
-                Template1: <Template1 content={content}  />,
-                Template2: <Template2 content={content} />,
-                Template3: <Template3 content={content} />,
-                Template4: <Template4 content={content} />
+                Minimal: <Template1 content={content}  />,
+                Lines: <Template2 content={content} />,
+                Cool: <Template3 content={content} />,
+                Rad: <Template4 content={content} />
             })[this.props.templateName]}
         </div>
     )

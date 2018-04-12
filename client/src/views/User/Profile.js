@@ -13,6 +13,23 @@ class Profile extends Component {
         modalOpen: false
     }
 
+    componentDidMount(){
+
+        httpClient.getUser(this.props.currentUser._id).then((apiResponse)=>{
+            this.setState({
+                fields: apiResponse.data
+            })
+        })
+
+        httpClient.getAllResumes().then((serverResponse) => {
+            this.setState({
+                resumes: serverResponse.data.filter((r)=> {
+                    return this.props.currentUser._id === r.user._id
+                })
+            })
+        })
+    }
+
     handleResumeClick(){
         httpClient.getResume(this.props.currentUser._id).then((apiResponse) => {
         this.props.history.push('/resume')
@@ -39,7 +56,7 @@ class Profile extends Component {
 
     handleEditClick(){
         this.setState({
-            modalOpen: true
+            modalOpen: !this.state.modalOpen
         })
     }
   
@@ -48,7 +65,7 @@ class Profile extends Component {
 		httpClient.updateUser(this.props.currentUser._id, this.state.fields).then((apiResponse) => {
 			this.setState({ 
                 fields: apiResponse.data.user,
-                modalOpen: false
+                modalOpen: !this.state.modalOpen
             })
         })
     }
@@ -59,22 +76,6 @@ class Profile extends Component {
                 ...this.state.fields,
                 [evt.target.name]: evt.target.value
             }
-        })
-    }
-
-    componentDidMount(){
-        httpClient.getUser(this.props.currentUser._id).then((apiResponse)=>{
-            this.setState({
-                fields: apiResponse.data
-            })
-        })
-
-        httpClient.getAllResumes().then((serverResponse) => {
-            this.setState({
-                resumes: serverResponse.data.filter((r)=> {
-                    return this.props.currentUser._id === r.user._id
-                })
-            })
         })
     }
 
@@ -89,9 +90,9 @@ class Profile extends Component {
                         header={fields.name}
                         meta={fields.email}
                         extra=
-                        {<Modal closeOnDocumentClick={true} className="ModalProfile" trigger=
+                        {<Modal closeOnDocumentClick={true} open={modalOpen} className="ModalProfile" trigger=
                             {<Button onClick=
-                                {this.handleEditClick.bind(this)} open={modalOpen} >EDIT</Button>
+                                {this.handleEditClick.bind(this)}>EDIT</Button>
                             }>
                         
                             <Modal.Header>EDIT YOUR PROFILE</Modal.Header>
@@ -114,6 +115,10 @@ class Profile extends Component {
            
         {resumes.map((r) => {
             console.log(r)
+            var startDate = new Date (r.experience[0].startDate);
+            var endDate = new Date (r.experience[0].endDate);
+            var graduationDate = new Date (r.education[0].graduationDate);
+                      
             return(
                 <div className="Template1">                                 {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
                     <div className="header">
@@ -140,7 +145,7 @@ class Profile extends Component {
                     <div className="experience">
                         <h3>EXPERIENCE</h3>
                         <p>{r.experience[0].company}</p>                    
-                        <h4>{r.experience[0].jobTitle} <span> {r.experience[0].startDate} to {r.experience[0].endDate}</span></h4>
+                        <h4>{r.experience[0].jobTitle} <span> {startDate.toLocaleDateString()} to {endDate.toLocaleDateString()}</span></h4>
                         {/* startDate.toLocaleDateString('en-US') */}
                         <p>{r.experience[0].details}</p>
                         {/* <p>Company</p>                    
@@ -150,7 +155,7 @@ class Profile extends Component {
                     <div className="education">
                         <h3>EDUCATION</h3>
                             <h4>{r.education[0].institution}</h4>
-                                <p>{r.education[0].degree}<span> {r.education[0].graduationDate}</span></p>                      
+                                <p>{r.education[0].degree} <span> {graduationDate.toLocaleDateString()}</span></p>                      
                     </div>
                     <Button className="show-resume" onClick={this.handleResumeClick.bind(this)}>SHOW</Button>
                     <Button className="show-resume" onClick={this.handleResumeEditClick.bind(this)}>EDIT</Button>      

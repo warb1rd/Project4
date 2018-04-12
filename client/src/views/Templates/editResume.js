@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form , Checkbox, Dropdown } from 'semantic-ui-react';
+import { Form , Checkbox, Dropdown, Button } from 'semantic-ui-react';
 
 // import Summary from './Summary.js';
 // import Technical from './Technical.js';
@@ -53,6 +53,33 @@ class EditResume extends Component {
         degree: "",
         graduationDate: "",
         makePublic: false,
+    }
+
+    componentDidMount(){
+        httpClient.getResume(this.props.routeProps.match.params.id).then((apiResponse)=>{
+            
+            // const {header,experience, projects, education,name, email, phone, summary, technical, title, description, company, 
+            //     jobTitle, startDate, endDate, details, institution, degree, graduationDate, templateName} = apiResponse.data
+                console.log(apiResponse.data)
+            this.setState({
+                // templateName: templateName,
+                // name: header.name,
+                // email: header.email,
+                // phone: header.phone,
+                // summary: summary,
+                // technical: technical,
+                // title: projects[0].title,
+                // description: projects[0].description,
+                // company: experience[0].company,
+                // jobTitle: experience[0].jobTitle,
+                // startDate: experience[0].startDate, 
+                // endDate: experience[0].endDate,         
+                // details: experience[0].details,
+                // institution: education[0].institution,
+                // degree: education[0].degree,
+                // graduationDate: education[0].graduationDate
+            })
+        })
     }
 
     handleChange(event) {
@@ -130,8 +157,8 @@ class EditResume extends Component {
                 </Form.Group>
                     
                 <Form.Group widths='equal'>
-                    <Form.Field label='PROJECTS' placeholder='Title' name='title'control='input' rows='1'  value={title}/>
-                    <Form.Field label='.' placeholder='Description' name='description' control='textarea' rows='2'  value={description} />
+                    <Form.Field label='PROJECTS' placeholder='Title' name='title'control='input' rows='1'  value={title}/> <span><Button>+</Button></span>
+                    <Form.Field label='.' placeholder='Description' name='description' control='textarea' rows='2'  value={description}/>
                 </Form.Group>
 
                 <Form.Group widths='equal'>
