@@ -98,7 +98,7 @@ class Profile extends Component {
                         />                    
                 </div>  
            
-        {resumes.map((r, index) => {
+        {resumes.map((r) => {
                     const {template} = this.props
 
             return(
@@ -128,6 +128,7 @@ class Profile extends Component {
                         <h3>EXPERIENCE</h3>
                         <p>{r.experience[0].company}</p>                    
                         <h4>{r.experience[0].jobTitle} <span> {r.experience[0].startDate} to {r.experience[0].endDate}</span></h4>
+                        {/* startDate.toLocaleDateString('en-US') */}
                         <p>{r.experience[0].details}</p>
                         {/* <p>Company</p>                    
                         <h4>Title <span>, 10 Jan 2010 </span></h4>

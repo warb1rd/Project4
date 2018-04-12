@@ -1,30 +1,30 @@
 const mongoose = require('mongoose');
 const resumeSchema = new mongoose.Schema({
     header:{
-        name: String,
-        email: String,
-        phone: String
+        name: {type: String, required: true},
+        email: {type: String, required: true},
+        phone: {type: String, required: true}
     },
-    summary: String, 
-    technical: String,
+    summary: {type: String, required: true}, 
+    technical: {type: String, required: true},
     projects: [{
-        title: String,
-        description: String
+        title: {type: String, required: true},
+        description: {type: String, required: true}
     }],
     experience: [{
-        company: String,
-        jobTitle: String,
-        startDate: Date, 
-        endDate: Date,         
-        details: String
+        company: {type: String, required: true},
+        jobTitle: {type: String, required: true},
+        startDate: {type: Date, required: true}, 
+        endDate: {type: Date, required: true},         
+        details: {type: String, required: true}
     }],
     education: [{
-        institution: String,
-        degree: String,
-        graduationDate: Date
+        institution: {type: String, required: true},
+        degree: {type: String, required: true},
+        graduationDate: {type: Date, required: true}
     }],
     makePublic: Boolean,
-    templateName: String,
+    templateName: {type: String, required: true},
     
     user: {type: mongoose.Schema.Types.ObjectId, ref: "User"}               //reference the user schema    
 })
