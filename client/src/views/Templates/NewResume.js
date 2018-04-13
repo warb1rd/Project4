@@ -70,7 +70,7 @@ class NewResume extends Component {
     handleFormSubmit(evt) {
         evt.preventDefault()
         const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, startDate, endDate, details, institution, degree, graduationDate, makePublic} = this.state
+            jobTitle, startDate, endDate, details, institution, degree, graduationDate, makePublic, templateName} = this.state
         const dataToSend = {
             header: {
                 name: name,
@@ -95,7 +95,8 @@ class NewResume extends Component {
                 degree: degree,
                 graduationDate: graduationDate,
             }],
-            makePublic: makePublic
+            makePublic: makePublic,
+            templateName: templateName
         }
         console.log(dataToSend)
         httpClient.createResume(dataToSend).then((apiResponse) => {

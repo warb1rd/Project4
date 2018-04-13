@@ -24,7 +24,7 @@ class Templates extends Component {
         const {resumes} = this.state
         return(
             <div>
-            <h1>LIST OF ALL RESUMES THAT'S 'MAKE PUBLIC'</h1>
+            <h2>Checkout resumes that inspire you.</h2>
                 {resumes.map((r)=>{   
                     var startDate = new Date (r.experience[0].startDate);
                     var endDate = new Date (r.experience[0].endDate);
