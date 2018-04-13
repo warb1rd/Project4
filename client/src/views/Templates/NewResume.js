@@ -1,22 +1,6 @@
 import React, {Component} from 'react';
 import { Form, Checkbox, Dropdown, Button } from 'semantic-ui-react';
 
-// import Summary from './Summary.js';
-// import Technical from './Technical.js';
-// import Projects from './Projects.js';
-// import Description from './Description.js';
-// import Experience from './Experience.js';
-// import Company from './Company.js';
-// import JobTitle from './JobTitle.js'
-// import Details from './Details.js';
-// import StartDate from './StartDate.js';
-// import EndDate from './EndDate.js';
-
-// import Education from './Education.js';
-// import Institution from './Institution.js';
-// import Degree from './Degree.js';
-// import GraduationDate from './GraduationDate.js';
-
 import Template1 from './Template1.js';
 import Template2 from './Template2.js';
 import Template3 from './Template3.js';
@@ -88,8 +72,7 @@ class NewResume extends Component {
                     degree: this.refs.degree.value,
                     graduationDate: this.refs.graduationDate.value,
                 }],
-                makePublic: true,
-                templateName: event.target.textContent
+                makePublic: !this.state.makePublic,
             }
         })
     }
@@ -104,11 +87,16 @@ class NewResume extends Component {
         console.log(event.target.textContent)
     }
 
-    handleFormSubmit(evt) {
-        evt.preventDefault()
-        const {makePublic, templateName} = this.state
+    handleFormSubmit(event) {
+        event.preventDefault()
+        const {makePublic, templateName} = this.state.resumeData
         httpClient.createResume(this.state.resumeData).then((apiResponse) => {
             this.props.history.push("/profile")
+            // this.setState({
+            //     resumeData:{
+            //         ...this.state.resumeData,
+            //     }
+            // })
         })
     }
 
@@ -116,7 +104,7 @@ class NewResume extends Component {
         // const {name, email, phone, summary, technical, title, 
         //     description, company, jobTitle, startDate, endDate, 
         //     details, institution, degree, 
-        const {makePublic, templateName,} = this.state
+        const {makePublic, templateName,} = this.state.resumeData
         return (
             <div>
                 <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
@@ -164,7 +152,7 @@ class NewResume extends Component {
 
                     <Form.Group widths='equal'>
                         <div className="field">
-                        <label>EXPERIENCE</label> 
+                            <label>EXPERIENCE</label> 
                             <input ref="company" label='Company' name='company'  type='text' placeholder='Company' />
                         </div>
                         <div className="field">
@@ -193,8 +181,8 @@ class NewResume extends Component {
                     </Form.Group>
                     
                     <Form.Group widths='equal'>
-                    <div className="field">
-                        <label>EDUCATION</label> 
+                        <div className="field">
+                            <label>EDUCATION</label> 
                             <input ref="institution" label='Institution' name='institution'  type='text' placeholder='Institution' />
                         </div>
                         <div className="field">
@@ -215,7 +203,7 @@ class NewResume extends Component {
 
                     <Form.Group grouped>                   
                         <Form.Field>
-                            {/* <Checkbox label="Make your resume searchable." onChange={this.handleChange.bind(this)}/> */}
+                            <Checkbox label="Make your resume searchable." onChange={this.handleChange.bind(this)}/>
                         </Form.Field>
                     </Form.Group>
                 </Form>          

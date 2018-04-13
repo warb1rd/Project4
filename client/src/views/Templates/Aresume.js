@@ -6,7 +6,6 @@ import Template4 from './Template4.js';
 import httpClient from '../../httpClient.js'
 
 class Aresume extends Component {
-
     state= {
         templateName: null,
         content: null

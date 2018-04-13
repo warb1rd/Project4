@@ -32,41 +32,50 @@ const templateOptions = [
 
 class EditResume extends Component {
     state = {
-        resumeData: {
-            header: {
-                name: '',
-                email: '',
-                phone: ''
-            },
-            summary: '', 
-            technical: '',
-            projects: [{
-                title: '',
-                description: '',
-            }],
-            experience: [{
-                company: '',
-                jobTitle: '',
-                startDate: '', 
-                endDate: '',
-                details: '',
-            }],
-            education: [{
-                institution: '',
-                degree: '',
-                graduationDate: '',
-            }],
-            makePublic: false,
-            templateName: 'Minimal'
-        }
+        resumeData: httpClient.getResume(this.props.match.params.id)
     }
 //NOT HAVE COMPONENT DID MOUNT?? GET INITIAL VALUE ON STATE FROM HTTP CLIENT?? 
-    componentDidMount(){
-        httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
-            console.log(apiResponse.data.resumeData)
+    // componentDidMount(){
+    //     httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
+    //         console.log(apiResponse.data.resumeData)
 
-            const {header,experience, projects, education, summary, technical, templateName} = apiResponse.data
-            this.setState({
+    //         const {header,experience, projects, education, summary, technical, templateName} = apiResponse.data
+    //         this.setState({
+    //             resumeData: {
+    //                 header: {
+    //                     name: this.refs.name.value,
+    //                     email: this.refs.email.value,
+    //                     phone: this.refs.phone.value
+    //                 },
+    //                 summary: this.refs.summary.value, 
+    //                 technical: this.refs.technical.value,
+    //                 projects: [{
+    //                     title: this.refs.title.value,
+    //                     description: this.refs.description.value,
+    //                 }],
+    //                 experience: [{
+    //                     company: this.refs.company.value,
+    //                     jobTitle: this.refs.jobTitle.value,
+    //                     startDate: this.refs.startDate.value, 
+    //                     endDate: this.refs.endDate.value,
+    //                     details: this.refs.details.value,
+    //                 }],
+    //                 education: [{
+    //                     institution: this.refs.institution.value,
+    //                     degree: this.refs.degree.value,
+    //                     graduationDate: this.refs.graduationDate.value,
+    //                 }],
+    //                 makePublic: true,
+    //                 // templateName: 
+    //             }
+    //         })
+    //     })
+    // }
+
+    handleChange(event) {
+		this.setState({
+                ...this.state.resumeData,
+                [event.target.name]: event.target.value,
                 resumeData: {
                     header: {
                         name: this.refs.name.value,
@@ -92,46 +101,8 @@ class EditResume extends Component {
                         graduationDate: this.refs.graduationDate.value,
                     }],
                     makePublic: true,
-                    // templateName: 
-                }
-            })
-        })
-    }
-
-    handleChange(event) {
-        const {header, summary, technical, projects, experience, education, makePublic, templateName} = this.state.resumeData
-		this.setState({
-                ...this.state,
-                [event.target.name]: event.target.value,
-                resumeData: {
-                    header: {
-                        name: header.name,
-                        email: header.email,
-                        phone: header.phone,
-                    },
-                    summary: summary, 
-                    technical: technical,
-                    projects: [{
-                        title: projects[0].title,
-                        description: projects[0].description,
-                    }],
-                    experience: [{
-                        company: experience[0].company,
-                        jobTitle: experience[0].jobTitle,
-                        startDate: experience[0].startDate, 
-                        endDate: experience[0].endDate,
-                        details: experience[0].details,
-                    }],
-                    education: [{
-                        institution: education[0].institution,
-                        degree: education[0].degree,
-                        graduationDate: education[0].graduationDate,
-                    }],
-                    makePublic: !makePublic,
                     templateName: event.target.textContent
-                    
                 }
-             
 		})
     }
 
@@ -147,36 +118,35 @@ class EditResume extends Component {
 
     handleFormSubmit(evt) {
         evt.preventDefault()
-        const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, startDate, endDate, details, institution, degree, graduationDate, makePublic} = this.state
-        const dataToSend = {
-            header: {
-                name: name,
-                email: email,
-                phone: phone
-            },
-            summary: summary, 
-            technical: technical,
-            projects: [{
-                title: title,
-                description: description,
-            }],
-            experience: [{
-                company: company,
-                jobTitle: jobTitle,
-                startDate: startDate, 
-                endDate: endDate,
-                details: details,
-            }],
-            education: [{
-                institution: institution,
-                degree: degree,
-                graduationDate: graduationDate,
-            }],
-            makePublic: makePublic
-        }
-        console.log(dataToSend)
-        httpClient.updateResume(this.props.match.params.id, dataToSend).then((apiResponse) => {
+        // const {name, email, phone, summary, technical, title, description, company, 
+        //     jobTitle, startDate, endDate, details, institution, degree, graduationDate, makePublic} = this.state
+        // const dataToSend = {
+        //     header: {
+        //         name: name,
+        //         email: email,
+        //         phone: phone
+        //     },
+        //     summary: summary, 
+        //     technical: technical,
+        //     projects: [{
+        //         title: title,
+        //         description: description,
+        //     }],
+        //     experience: [{
+        //         company: company,
+        //         jobTitle: jobTitle,
+        //         startDate: startDate, 
+        //         endDate: endDate,
+        //         details: details,
+        //     }],
+        //     education: [{
+        //         institution: institution,
+        //         degree: degree,
+        //         graduationDate: graduationDate,
+        //     }],
+        //     makePublic: makePublic
+        // }
+        httpClient.updateResume(this.props.match.params.id, this.state.resumeData).then((apiResponse) => {
             this.props.history.push("/profile")
             console.log(apiResponse)
         })
@@ -190,7 +160,7 @@ class EditResume extends Component {
         {text:"Rad", value: "Template4"}
     ]
         const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, startDate, endDate, details, institution, degree, graduationDate} = this.state
+            jobTitle, startDate, endDate, details, institution, degree, graduationDate} = this.state.resumeData
         return (
             <div>
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
@@ -284,11 +254,11 @@ class EditResume extends Component {
             </Form>          
 
                 { ({
-                    Minimal: <Template1 content={this.state}  />,
-                    Lines: <Template2 content={this.state} />,
-                    Cool: <Template3 content={this.state} />,
-                    Rad: <Template4 content={this.state} />
-                })[this.state.templateName] }
+                    Minimal: <Template1 content={this.state.resumeData}  />,
+                    Lines: <Template2 content={this.state.resumeData} />,
+                    Cool: <Template3 content={this.state.resumeData} />,
+                    Rad: <Template4 content={this.state.resumeData} />
+                })[this.state.resumeData.templateName] }
                 
             </div>
         )
