@@ -5,12 +5,24 @@ import Template3 from './Template3.js';
 import Template4 from './Template4.js';
 
 class Resume1 extends Component {
+
+    state= {
+        templateName: "Template1",
+
+    }
     render(){
     const {content} = this.props
+    const templateOptions = [
+        {text:'Minimal', value: "Template1"},
+        {text:"Lines", value: "Template2"},
+        {text:"Cool", value: "Template3"},
+        {text:"Rad", value: "Template4"}
+    ]
     console.log(content)
     return(
         <div>
             <p>HELLO</p>
+            
             {({
                 Minimal: <Template1 content={content}  />,
                 Lines: <Template2 content={content} />,

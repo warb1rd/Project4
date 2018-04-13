@@ -156,10 +156,10 @@ class NewResume extends Component {
                 </Form>          
                      
                 {({
-                    Minimal: <Template1 template={templateOptions} content={this.state}  />,
-                    Lines: <Template2 template={templateOptions} content={this.state} />,
-                    Cool: <Template3 template={templateOptions} content={this.state} />,
-                    Rad: <Template4 template={templateOptions} content={this.state} />
+                    Minimal: <Template1 template={this.state.templateName} content={this.state}  />,
+                    Lines: <Template2 template={this.state.templateName} content={this.state} />,
+                    Cool: <Template3 template={this.state.templateName} content={this.state} />,
+                    Rad: <Template4 template={this.state.templateName} content={this.state} />
                 })[this.state.templateName]}
                 
             </div>
