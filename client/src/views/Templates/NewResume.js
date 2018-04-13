@@ -59,9 +59,7 @@ class NewResume extends Component {
             }],
             makePublic: false,
             templateName: 'Minimal'
-        }
-        // templateName: "",    
-        // makePublic: false,
+        }     
     }
 
     handleChange(event) {
@@ -90,8 +88,8 @@ class NewResume extends Component {
                     degree: this.refs.degree.value,
                     graduationDate: this.refs.graduationDate.value,
                 }],
-                // makePublic: makePublic,
-                templateName: "Minimal"
+                makePublic: true,
+                templateName: event.target.textContent
             }
         })
     }
@@ -123,7 +121,7 @@ class NewResume extends Component {
             <div>
                 <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
                     <Form.Group widths='equal'>
-                        <Dropdown onChange={this.handleDropdownClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
+                        <Dropdown ref="templateOptions" onChange={this.handleDropdownClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
                         <div className="field">
                             <label>NAME</label>
                             <input ref="name" label='Name' name='name'  type='text' />
@@ -153,7 +151,6 @@ class NewResume extends Component {
                     </Form.Group>  
 
                     <Form.Group widths='equal'>
-                        {/* <Form.Field label='PROJECTS' placeholder='Title' name='title'control='input' rows='1' /> */}
                         <div className="field">
                             <label>PROJECT</label>
                             <input ref="title" label='NAME' name='title'  placeholder="Project Title" type='text' />
@@ -184,7 +181,7 @@ class NewResume extends Component {
                         </div>
                         <div className="field">
                             <label>.</label>
-                            <input ref="details" label='Details' name='details'  type='textarea' placeholder='Details'/>
+                            <input ref="details" label='Details' name='details'  type='text' placeholder='Details'/>
                         </div>
 
 
@@ -236,29 +233,3 @@ class NewResume extends Component {
 }
 
 export default NewResume
-
-
-//   {/* <div className='Template4'>
-//                             <div className='header'>
-//                                 <h2 className='name'>{name}</h2>
-//                                 <p>{email}<span> || </span><span>{phone}</span></p>
-//                             </div>
-                                    
-//                             <Grid columns={2} divided> 
-//                                 <Summary content={summary}/>
-//                                 <Technical content={technical}/>  
-//                                 <Projects content={title}/>
-//                                     <Description content={description}/>                             
-                                
-//                                 <Experience content={company}/> 
-//                                     <JobTitle content={jobTitle}/>
-//                                     <StartDate content={startDate}/> - <EndDate content={endDate}/>       
-//                                     <Details content={details}/>
-                                                          
-                                                                     
-//                                 <Education content={institution}/>
-//                                     <Degree content={degree}/> 
-//                                     <GraduationDate content={graduationDate}/>                                                                                            
-                                              
-//                             </Grid>
-//                             </div> */}

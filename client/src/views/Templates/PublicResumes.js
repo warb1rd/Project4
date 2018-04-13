@@ -10,10 +10,10 @@ class Templates extends Component {
     }
 
     componentDidMount(){
-        httpClient.getAllResumes().then((serverResponse) => {
+        httpClient.getAllResumes().then((apiResponse) => {
             this.setState({
-                resumes: serverResponse.data,
-                makePublic: serverResponse.data[0].makePublic
+                resumes: apiResponse.data,
+                makePublic: apiResponse.data[0].makePublic
             })
         })
     }

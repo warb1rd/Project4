@@ -32,61 +32,115 @@ const templateOptions = [
 
 class EditResume extends Component {
     state = {
-        templateName: "Template1",
-        name: "",
-        email: "",
-        phone: "",
-        summary: "", 
-        technical: "",
-        title: "",
-        description: "",
-        company: "",
-        jobTitle: "",
-        startDate: "", 
-        endDate: "",         
-        details: "",
-        institution: "",
-        degree: "",
-        graduationDate: "",
-        makePublic: false,
+        resumeData: {
+            header: {
+                name: '',
+                email: '',
+                phone: ''
+            },
+            summary: '', 
+            technical: '',
+            projects: [{
+                title: '',
+                description: '',
+            }],
+            experience: [{
+                company: '',
+                jobTitle: '',
+                startDate: '', 
+                endDate: '',
+                details: '',
+            }],
+            education: [{
+                institution: '',
+                degree: '',
+                graduationDate: '',
+            }],
+            makePublic: false,
+            templateName: 'Minimal'
+        }
     }
-
+//NOT HAVE COMPONENT DID MOUNT?? GET INITIAL VALUE ON STATE FROM HTTP CLIENT?? 
     componentDidMount(){
         httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
-           
+            console.log(apiResponse.data.resumeData)
+
             const {header,experience, projects, education, summary, technical, templateName} = apiResponse.data
             this.setState({
-                templateName: templateName,
-                name: header.name,
-                email: header.email,
-                phone: header.phone,
-                summary: summary,
-                technical: technical,
-                title: projects[0].title,
-                description: projects[0].description,
-                company: experience[0].company,
-                jobTitle: experience[0].jobTitle,
-                startDate: experience[0].startDate, 
-                endDate: experience[0].endDate,         
-                details: experience[0].details,
-                institution: education[0].institution,
-                degree: education[0].degree,
-                graduationDate: education[0].graduationDate
+                resumeData: {
+                    header: {
+                        name: this.refs.name.value,
+                        email: this.refs.email.value,
+                        phone: this.refs.phone.value
+                    },
+                    summary: this.refs.summary.value, 
+                    technical: this.refs.technical.value,
+                    projects: [{
+                        title: this.refs.title.value,
+                        description: this.refs.description.value,
+                    }],
+                    experience: [{
+                        company: this.refs.company.value,
+                        jobTitle: this.refs.jobTitle.value,
+                        startDate: this.refs.startDate.value, 
+                        endDate: this.refs.endDate.value,
+                        details: this.refs.details.value,
+                    }],
+                    education: [{
+                        institution: this.refs.institution.value,
+                        degree: this.refs.degree.value,
+                        graduationDate: this.refs.graduationDate.value,
+                    }],
+                    makePublic: true,
+                    // templateName: 
+                }
             })
         })
     }
 
     handleChange(event) {
+        const {header, summary, technical, projects, experience, education, makePublic, templateName} = this.state.resumeData
 		this.setState({
                 ...this.state,
                 [event.target.name]: event.target.value,
-                makePublic: !this.state.makePublic
+                resumeData: {
+                    header: {
+                        name: header.name,
+                        email: header.email,
+                        phone: header.phone,
+                    },
+                    summary: summary, 
+                    technical: technical,
+                    projects: [{
+                        title: projects[0].title,
+                        description: projects[0].description,
+                    }],
+                    experience: [{
+                        company: experience[0].company,
+                        jobTitle: experience[0].jobTitle,
+                        startDate: experience[0].startDate, 
+                        endDate: experience[0].endDate,
+                        details: experience[0].details,
+                    }],
+                    education: [{
+                        institution: education[0].institution,
+                        degree: education[0].degree,
+                        graduationDate: education[0].graduationDate,
+                    }],
+                    makePublic: !makePublic,
+                    templateName: event.target.textContent
+                    
+                }
+             
 		})
     }
 
-    handleLabelClick(event) {
+    handleDropDownClick(event) {
 		this.setState({
-            templateName:event.target.textContent
+            resumeData: {
+                ...this.state.resumeData,
+                templateName: event.target.textContent
+            }
         })
         console.log(event.target.textContent)
     }
@@ -128,7 +182,6 @@ class EditResume extends Component {
         })
     }
 
-    //use component did mount? history.goBack
    render(){  
     const templateOptions = [
         {text:'Minimal', value: "Template1"},
@@ -142,37 +195,83 @@ class EditResume extends Component {
             <div>
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
                 <Form.Group widths='equal'>
-                    <Dropdown onChange={this.handleLabelClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
-                    <Form.Field label='NAME' name='name'  control='input' value={name}/>
-                    <Form.Field label='EMAIL' name='email' control='input' value={email}/>
-                    <Form.Field label='PHONE' name='phone' control='input'  value={phone}/>
+                    <Dropdown onChange={this.handleDropDownClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
+                        <div className="field">
+                            <label>NAME</label>
+                            <input ref="name" label='Name' name='name'  type='text' />
+                        </div>
+                        <div className="field">
+                            <label>EMAIL</label>
+                            <input ref="email" label='Email' name='email'  type='text' />
+                        </div>
+                        <div className="field">
+                            <label>PHONE</label>
+                            <input ref="phone" label='Phone' name='phone'  type='text' />
+                        </div>
                 </Form.Group>
                 
                 <Form.Group>
-                    <Form.Field label='SUMMARY' name='summary' control='textarea' rows='3' value={summary}/>
+                        <div className="field">
+                            <label>SUMMARY</label>
+                            <input ref="summary" label='Summary' name='summary'  type='text' />
+                        </div>   
                 </Form.Group>
                 
                 <Form.Group>
-                    <Form.Field label='TECHNICAL SKILLS' name='technical' control='input'  value={technical}/>
+                        <div className="field">
+                            <label>TECHNICAL</label>
+                            <input ref="technical" label='Technical' name='technical'  type='text' />
+                        </div>
                 </Form.Group>
                     
                 <Form.Group widths='equal'>
-                    <Form.Field label='PROJECTS' placeholder='Title' name='title'control='input' rows='1'  value={title}/> <span><Button>+</Button></span>
-                    <Form.Field label='.' placeholder='Description' name='description' control='textarea' rows='2'  value={description}/>
+                        <div className="field">
+                            <label>PROJECT</label>
+                            <input ref="title" label='NAME' name='title'  placeholder="Project Title" type='text' />
+                        </div>
+                        
+                        <div className="field">
+                            <label>.</label>
+                            <input ref="description" label='Description' name='description'  type='text' />
+                        </div>                
                 </Form.Group>
 
                 <Form.Group widths='equal'>
-                    <Form.Field label='EXPERIENCE' placeholder='Company' name='company' control='input' rows='1' value={company}/>
-                    <Form.Field label='.' placeholder='Job Title' name='jobTitle' control='input' rows='2' value={jobTitle}/>
-                    <Form.Field label='From' placeholder='Date from' name='startDate' type='date' control='input'  rows='2' value={startDate} />
-                    <Form.Field label='To' placeholder='Date to' name='endDate' type='date' control='input' rows='2' value={endDate}/>
-                    <Form.Field label='.' placeholder='Details' name='details' control='textarea' rows='2' value={details}/>                  
+                <div className="field">
+                        <label>EXPERIENCE</label> 
+                            <input ref="company" label='Company' name='company'  type='text' placeholder='Company' />
+                        </div>
+                        <div className="field">
+                            <label>.</label>
+                            <input ref="jobTitle" label='Job Title' name='jobTitle'  type='text' placeholder='Job Title' />
+                        </div>
+                        <div className="field">
+                            <label>.</label>
+                            <input ref="startDate" label='From' name='startDate'  type='date' placeholder='From'/>
+                        </div>
+                        <div className="field">
+                            <label>.</label>
+                            <input ref="endDate" label='To' name='endDate'  type='date' placeholder='To'/>
+                        </div>
+                        <div className="field">
+                            <label>.</label>
+                            <input ref="details" label='Details' name='details'  type='text' placeholder='Details'/>
+                        </div>                  
                 </Form.Group>
                 
                 <Form.Group widths='equal'>
-                    <Form.Field label='EDUCATION' placeholder='Institution' name='institution' control='input' rows='1' value={institution}/>
-                    <Form.Field label='.' placeholder='Degree' control='input' name='degree' rows='2' value={degree}/>
-                    <Form.Field label='.' placeholder='Date' control='input' type='date' name='graduationDate' rows='2' value={graduationDate}/>
+                <div className="field">
+                            <label>EDUCATION</label> 
+                            <input ref="institution" label='Institution' name='institution'  type='text' placeholder='Institution' />
+                        </div>
+                        <div className="field">
+                            <label>.</label>
+                            <input ref="degree" label='Degree' name='degree'  type='text' placeholder='Degree' />
+                        </div>
+                        <div className="field">
+                            <label>.</label>
+                            <input ref="graduationDate" label='Graduation date' name='graduationDate'  type='date' placeholder='Date'/>
+                        </div>
                 </Form.Group>
                 
                 <Button> SAVE RESUME </Button>

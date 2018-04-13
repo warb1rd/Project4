@@ -104,7 +104,6 @@ class Profile extends Component {
                 </div>  
            
         {resumes.map((r) => {
-            console.log(r)
             var startDate = new Date (r.experience[0].startDate);
             var endDate = new Date (r.experience[0].endDate);
             var graduationDate = new Date (r.education[0].graduationDate);
