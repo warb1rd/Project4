@@ -8,7 +8,7 @@ import httpClient from '../../httpClient.js'
 class Aresume extends Component {
 
     state= {
-        templateName: "",
+        templateName: null,
         content: null
     }
 
@@ -30,17 +30,17 @@ class Aresume extends Component {
         {text:"Cool", value: "Template3"},
         {text:"Rad", value: "Template4"}
     ]
-    console.log(content)
     return(
         <div>
             <p>HELLO</p>
-
-            {({
+            <p>Dynamically render the resume depending on what template the user picked</p>
+            <p>Ask Philippe what the below syntax does</p>
+            {content && ({
                 Minimal: <Template1 content={content}  />,
                 Lines: <Template2 content={content} />,
                 Cool: <Template3 content={content} />,
                 Rad: <Template4 content={content} />
-            })[this.props.templateName]}
+            })[this.state.templateName]}
         </div>
         )
     }

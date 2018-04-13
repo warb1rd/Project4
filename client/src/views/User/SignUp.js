@@ -9,7 +9,8 @@ class SignUp extends Component {
             name: "", 
             email: "", 
             password: ""
-        }
+        },
+        errorMessage: null, 
     }
     handleChange(evt) {
 		this.setState({
@@ -36,7 +37,9 @@ class SignUp extends Component {
                 console.log(this.props)
                 this.props.onSignUpSuccess(user)
 				this.props.history.push('/')
-			}
+			}setTimeout(this.setState({
+                errorMessage: "Something seems wrong. Did you mean to Login?",
+            }) , 5000)
 		})
 	}
 
@@ -44,7 +47,10 @@ class SignUp extends Component {
         const { name, email, password } = this.state.fields
 
         return (
-            <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
+            <div>
+            {this.state.errorMessage !== null && <p style={{backgroundColor:"lightcoral", borderRadius:"2px", padding:"{this.state.padding}"}}>{this.state.errorMessage}</p>}
+
+            <Form className="signup-form" onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Group>
                     <Form.Input type="text" placeholder='Name' name='name' value={name} />
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
@@ -52,6 +58,7 @@ class SignUp extends Component {
                     <Button>Submit</Button>
                 </Form.Group>
             </Form>
+            </div>
         )
   }
 }

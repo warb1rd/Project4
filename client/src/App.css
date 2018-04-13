@@ -96,6 +96,11 @@ div .ui.card{
   background-color: #222629;
 }
 
+.signup-form{
+  width: 500px;
+  margin: 0 auto;
+}
+
 /* @media print {
   .no-print {
     display: none;

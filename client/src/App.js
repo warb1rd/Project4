@@ -63,7 +63,9 @@ class App extends Component {
             }} />
 
             <Route path="/profile" render={(routeProps)=>{
-              return <Profile {...routeProps} currentUser={currentUser}/>
+              return currentUser
+              ? <Profile {...routeProps} currentUser={currentUser}/>
+              : <Redirect to="/login"/>
             }} />
 
             <Route path="/resumes/:id/edit" render={(routeProps)=>{

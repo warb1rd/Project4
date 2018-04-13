@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import httpClient from '../../httpClient.js'
-import {Alert} from 'reactstrap';
+// import {Alert} from 'reactstrap';
 
 class Login extends Component {
     state = {
@@ -61,9 +61,8 @@ class Login extends Component {
                 )
             })} */}
 
-            <Form warning onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
-                <Form.Group>
-                
+            <Form signup-form onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
+                <Form.Group>               
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
                     <Form.Input type="password" placeholder='Password' name='password' value={password} />
                     <Button type="submit">LOGIN</Button>

@@ -31,12 +31,6 @@ class Profile extends Component {
         })
     }
 
-    // handleResumeClick(){
-    //     httpClient.getResume(this.props.currentUser._id).then((apiResponse) => {
-    //     this.props.history.push('/resume')
-    //     })
-    // }
-
     handleResumeEditClick(){
         this.props.history.push('/resumes/:id/edit')
     }
@@ -47,7 +41,6 @@ class Profile extends Component {
                 resumes: this.state.resumes.filter((r) => {
                     return r._id !== id  
                 })
-                
             })
         })
     }
@@ -143,11 +136,8 @@ class Profile extends Component {
                         <h3>EXPERIENCE</h3>
                         <p>{r.experience[0].company}</p>                    
                         <p>{r.experience[0].jobTitle} <span> {startDate && startDate.toLocaleDateString()} to {endDate && endDate.toLocaleDateString()}</span></p>
-                        {/* startDate.toLocaleDateString('en-US') */}
                         <p>{r.experience[0].details}</p>
-                        {/* <p>Company</p>                    
-                        <h4>Title <span>, 10 Jan 2010 </span></h4>
-                        <p>{r.phone}</p>                    */}
+                      
                     </div>
                     <div className="education">
                         <h3>EDUCATION</h3>
@@ -169,28 +159,3 @@ class Profile extends Component {
 }
 
 export default Profile
-
-
-
-//                 /* <Modal className="ModalProfile" trigger={<Card className="Profile-card"
-//                     image='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg'
-//                     header={this.state.fields.name}
-//                     meta={this.state.fields.email}
-//                     extra={<Button onClick={this.handleEditClick.bind(this)}>EDIT</Button>}
-//                     />} open={modalOpen} > */
-//                   /* <Modal.Header>EDIT YOUR PROFILE</Modal.Header>
-//                   <Modal.Content image>
-//                     <Image wrapped size='small' src='https://react.semantic-ui.com/assets/images/avatar/large/daniel.jpg' />
-//                     <Form onSubmit={this.handleSubmit.bind(this)} onChange={this.handleChange.bind(this)}>
-//                         <Form.Group>
-//                             <Form.Input type="text" value={fields.name} name='name' />
-//                             <Form.Input type="text" placeholder='Email' name='email' value={fields.email} />
-//                             <Form.Input type="password" placeholder='Password' name='password' />
-//                             <Button>Submit</Button>
-//                         </Form.Group>
-//                     </Form>
-                    
-//                   </Modal.Content>
-//                 </Modal> 
-//            </div> */}
-           
