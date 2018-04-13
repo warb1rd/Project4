@@ -86,7 +86,7 @@ div .ui.card{
   margin-top: 20px;
 }
 
-.field label ::placeholder textarea {
+.field label ::placeholder {
   color: #ffffffe6 !important;
   font-family: 'Montserrat', sans-serif !important;
 

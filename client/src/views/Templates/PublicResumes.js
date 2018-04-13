@@ -11,7 +11,6 @@ class Templates extends Component {
 
     componentDidMount(){
         httpClient.getAllResumes().then((serverResponse) => {
-            console.log(serverResponse.data)
             this.setState({
                 resumes: serverResponse.data,
                 makePublic: serverResponse.data[0].makePublic

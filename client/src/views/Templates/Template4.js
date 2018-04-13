@@ -7,8 +7,8 @@ class Template4 extends Component{
         return(
             <div className="Template4">
                 <div className="header">
-                    <h2 className="name">{content.name}</h2>
-                    <p>{content.email}<span>||</span><span>{content.phone}</span></p>
+                    <h2 className="name">{content.header.name}</h2>
+                    <p>{content.header.email}<span>||</span><span>{content.header.phone}</span></p>
                 </div>
                 <Grid columns={2} divided>
 
@@ -33,8 +33,8 @@ class Template4 extends Component{
 
                     <Grid.Row>
                         <Grid.Column>
-                            <h4>{content.title}</h4>
-                            <p>{content.description}</p>
+                            <h4>{content.projects[0].title}</h4>
+                            <p>{content.projects[0].description}</p>
                         </Grid.Column>
                         <Grid.Column>
                             <h3>PROJECTS</h3>  
@@ -46,9 +46,9 @@ class Template4 extends Component{
 
                     <Grid.Row>
                         <Grid.Column>
-                            <p>{content.company}</p>
-                            <h5>{content.jobTitle}  <span> {content.startDate} to {content.endDate} </span> </h5><br/>
-                            <p>{content.details}</p>                           
+                            <p>{content.experience[0].company}</p>
+                            <h5>{content.experience[0].jobTitle}  <span> {content.experience[0].startDate} to {content.experience[0].endDate} </span> </h5><br/>
+                            <p>{content.experience[0].details}</p>                           
                         </Grid.Column>
                         <Grid.Column>
                             <h3>EXPERIENCE</h3> 
@@ -57,13 +57,14 @@ class Template4 extends Component{
                     
                     <Grid.Row>
                         <Grid.Column>
-                            <p>{content.institution}<span>{content.graduationDate}</span></p>
+                            <p>{content.education[0].institution}<span>{content.education[0].graduationDate}</span></p>
                         </Grid.Column>
                         <Grid.Column>
                             <h3>EDUCATION</h3>                                   
                         </Grid.Column>
                         <Grid.Column>
-                            <p>{content.degree}</p>
+                            <p>{content.education[0].degree}</p>
+                            
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
