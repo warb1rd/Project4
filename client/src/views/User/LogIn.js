@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Message } from 'semantic-ui-react';
 import httpClient from '../../httpClient.js'
 
 class Login extends Component {
@@ -7,7 +7,8 @@ class Login extends Component {
         fields:{ 
             email: "", 
             password: ""
-        }
+        }, 
+        errorMessage: null
     }
     handleChange(evt) {
 		this.setState({
@@ -30,18 +31,26 @@ class Login extends Component {
                 }
             })
 			if(apiResponse) {
-                console.log(this.props)
                 this.props.onLoginSuccess(apiResponse)
 				this.props.history.push('/profile')
-			}
+			} setTimeout(this.setState({
+                errorMessage: "Something seems wrong, try again."
+            }) , 5000)
 		})
 	}
 
     render() {
-        const {email, password} = this.state.fields
+        const {email, password, errorMessage} = this.state.fields
 
         return (
             <div>
+                {/* <Form warning>
+                <Message
+                warning
+                list={[{errorMessage}]} />
+                </Form> */}
+                <p style={{backgroundColor:"lightcoral"}}>{this.state.errorMessage}</p>
+
             {Object.keys(this.state.fields).map(fieldName => {
                 return (
                     <div>
@@ -51,9 +60,9 @@ class Login extends Component {
                 )
             })}
 
-
-            <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
+            <Form warning onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Group>
+                
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
                     <Form.Input type="password" placeholder='Password' name='password' value={password} />
                     <Button type="submit">LOGIN</Button>

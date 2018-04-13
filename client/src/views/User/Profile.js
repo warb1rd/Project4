@@ -31,14 +31,14 @@ class Profile extends Component {
         })
     }
 
-    handleResumeClick(){
-        httpClient.getResume(this.props.currentUser._id).then((apiResponse) => {
-        this.props.history.push('/resume')
-        })
-    }
+    // handleResumeClick(){
+    //     httpClient.getResume(this.props.currentUser._id).then((apiResponse) => {
+    //     this.props.history.push('/resume')
+    //     })
+    // }
 
     handleResumeEditClick(){
-        this.props.history.push('/editresume')
+        this.props.history.push('/resumes/:id/edit')
     }
 
     handleResumeDelete(id){
@@ -154,8 +154,8 @@ class Profile extends Component {
                             <h4>{r.education[0].institution}</h4>
                                 <p>{r.education[0].degree} <span> {graduationDate && graduationDate.toLocaleDateString()}</span></p>                      
                     </div>
-                    <Button className="show-resume" onClick={this.handleResumeClick.bind(this)}>SHOW</Button>
-                    <Link className="ui button show-resume show-resume" to={`/resumes/${r._id}/edit`}>EDIT</Link>      
+                    <Link className="ui button show-resume" to={`/resume/${r._id}`}>SHOW</Link>
+                    <Link className="ui button show-resume" to={`/resumes/${r._id}/edit`}>EDIT</Link>      
                     <Button className="show-resume" onClick={this.handleResumeDelete.bind(this, r._id)}>DELETE</Button>      
                           
                 </div>

@@ -73,9 +73,10 @@ class App extends Component {
             }} />
             <Route path="/resumes" component={PublicResumes} />
             
-            <Route path="/resume" component={Aresume} />
+            <Route path="/resume/:id" component={Aresume} />
 
             <Route path="/templates/newresume" component={NewResume} />
+
             {/* <Route path="/template4" component={Template4} />  
             <Route path="/template3" component={Template3} />  
             <Route path="/template2" component={Template2} />             

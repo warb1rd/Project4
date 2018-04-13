@@ -33,7 +33,7 @@ const templateOptions = [
 
 class NewResume extends Component {
     state = {
-        templateName: "Template1",
+        templateName: "",
         name: "",
         email: "",
         phone: "",
@@ -62,7 +62,7 @@ class NewResume extends Component {
 
     handleLabelClick(event) {
 		this.setState({
-            templateName:event.target.textContent
+            templateName: event.target.textContent
         })
         console.log(event.target.textContent)
     }
@@ -156,7 +156,7 @@ class NewResume extends Component {
                 </Form>          
                      
                 {({
-                    Minimal: <Template1 template={this.state.templateName} content={this.state}  />,
+                    Minimal: <Template1 template={this.state.templateName} name={"billy"} content={this.state}  />,
                     Lines: <Template2 template={this.state.templateName} content={this.state} />,
                     Cool: <Template3 template={this.state.templateName} content={this.state} />,
                     Rad: <Template4 template={this.state.templateName} content={this.state} />

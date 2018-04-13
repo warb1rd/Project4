@@ -33,7 +33,7 @@ div.ui.segment.pushable{
 } 
 
 i.big.icon, i.big.icons{
-  color: #f0c311;
+  color: #f0c311 !important;
 }
 
 .Form-container{
@@ -50,17 +50,20 @@ i.big.icon, i.big.icons{
   overflow: hidden;  
 }
 
-#template, #newResume, #print, #profile, #logout, #login, #signUp, #home {
+#template a, #newResume a, #print, #profile a, #logout a, #login a, #signUp a, #home a{
   /* background-color: red;  */
-  padding: 0 65px 0 65px;
   background-color: #222629;
-  color: #f0c311;
+  color: #f0c311 !important;
   font-family: 'Montserrat', sans-serif;
 }
+#template , #newResume , #print, #profile , #logout , #login , #signUp , #home {
 
-.ui.menu.item{
-  color: #f0c311
+  padding: 0 65px 0 65px;
+  color: #f0c311 !important;
+  
 }
+
+
 
 h4, h2, h3 span{
   font-family: 'Montserrat', sans-serif;
@@ -91,7 +94,6 @@ div .ui.card{
 
 .ui.inverted.ui.overlay.top.visible.sidebar.menu{
   background-color: #222629;
-
 }
 /* @media print {
   .no-print {

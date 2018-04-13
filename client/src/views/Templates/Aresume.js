@@ -3,15 +3,26 @@ import Template1 from './Template1.js';
 import Template2 from './Template2.js';
 import Template3 from './Template3.js';
 import Template4 from './Template4.js';
+import httpClient from '../../httpClient.js'
 
 class Resume1 extends Component {
 
     state= {
-        templateName: "Template1",
+        templateName: "",
+        content: null
+    }
 
+    componentDidMount(){
+        const resumeId = this.props.match.params.id
+        httpClient.getResume(resumeId).then((apiResponse) => {
+            this.setState({
+                content:apiResponse.data, 
+                templateName: apiResponse.data.templateName
+            })
+        })
     }
     render(){
-    const {content} = this.props
+    const {content} = this.state
     const templateOptions = [
         {text:'Minimal', value: "Template1"},
         {text:"Lines", value: "Template2"},
@@ -22,7 +33,7 @@ class Resume1 extends Component {
     return(
         <div>
             <p>HELLO</p>
-            
+
             {({
                 Minimal: <Template1 content={content}  />,
                 Lines: <Template2 content={content} />,
