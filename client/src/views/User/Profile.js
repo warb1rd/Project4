@@ -121,7 +121,7 @@ class Profile extends Component {
             var graduationDate = new Date (r.education[0].graduationDate);
                       
             return(
-                <div className="Template3">                                                                  {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
+                <div className="Template3" key={r._id}>                                                                  {/*CHANGE CLASSNAME DYNAMICALLY AS THE USER CLICKS ON DROPDOWN OPTIONS*/}
                     <div className="header">
                         <h2 className="name">{r.header.name}</h2>
                         <p>{r.header.email}<span>||</span><span>{r.header.phone}</span></p>

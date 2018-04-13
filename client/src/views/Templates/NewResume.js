@@ -153,7 +153,7 @@ class NewResume extends Component {
                         </Form.Field>
                     </Form.Group>
                 </Form>          
-                      
+                     
                 {({
                     Minimal: <Template1 template={templateOptions} content={this.state}  />,
                     Lines: <Template2 template={templateOptions} content={this.state} />,

@@ -53,9 +53,8 @@ class EditResume extends Component {
 
     componentDidMount(){
         httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
-            
-            const {header,experience, projects, education,name, email, phone, summary, technical, title, description, company, 
-                jobTitle, startDate, endDate, details, institution, degree, graduationDate, templateName} = apiResponse.data
+           
+            const {header,experience, projects, education, summary, technical, templateName} = apiResponse.data
             this.setState({
                 templateName: templateName,
                 name: header.name,
