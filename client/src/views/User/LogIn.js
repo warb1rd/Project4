@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Message } from 'semantic-ui-react';
 import httpClient from '../../httpClient.js'
+import {Alert} from 'reactstrap';
 
 class Login extends Component {
     state = {
@@ -8,8 +9,10 @@ class Login extends Component {
             email: "", 
             password: ""
         }, 
-        errorMessage: null
+        errorMessage: null, 
+        padding: ""
     }
+
     handleChange(evt) {
 		this.setState({
 			fields: {
@@ -34,7 +37,8 @@ class Login extends Component {
                 this.props.onLoginSuccess(apiResponse)
 				this.props.history.push('/profile')
 			} setTimeout(this.setState({
-                errorMessage: "Something seems wrong, try again."
+                errorMessage: "Something seems wrong, try again.",
+                padding: "30px"
             }) , 5000)
 		})
 	}
@@ -44,21 +48,18 @@ class Login extends Component {
 
         return (
             <div>
-                {/* <Form warning>
-                <Message
-                warning
-                list={[{errorMessage}]} />
-                </Form> */}
-                <p style={{backgroundColor:"lightcoral"}}>{this.state.errorMessage}</p>
+                 {/* <Alert color="warning">{this.state.errorMessage}</Alert> */}
 
-            {Object.keys(this.state.fields).map(fieldName => {
+                {this.state.errorMessage !== null && <p style={{backgroundColor:"lightcoral", borderRadius:"2px", padding:"{this.state.padding}"}}>{this.state.errorMessage}</p>}
+
+            {/* {Object.keys(this.state.fields).map(fieldName => {
                 return (
                     <div>
                         <h2>{fieldName}</h2>
                         <p>{this.state.fields[fieldName]}</p>
                     </div>
                 )
-            })}
+            })} */}
 
             <Form warning onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Group>

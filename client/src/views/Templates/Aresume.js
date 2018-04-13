@@ -5,7 +5,7 @@ import Template3 from './Template3.js';
 import Template4 from './Template4.js';
 import httpClient from '../../httpClient.js'
 
-class Resume1 extends Component {
+class Aresume extends Component {
 
     state= {
         templateName: "",
@@ -21,6 +21,7 @@ class Resume1 extends Component {
             })
         })
     }
+    
     render(){
     const {content} = this.state
     const templateOptions = [
@@ -45,4 +46,4 @@ class Resume1 extends Component {
     }
 }
 
-export default Resume1
+export default Aresume
