@@ -22,11 +22,18 @@
     }
 
     h3{
+        font-family: 'Montserrat', sans-serif;
         margin: 15px 0 0 0;    
     }
 
-    h4{
+    h4, h5, h2{
         margin: 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    h5 span {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: lighter;
     }
 
     .summary, .tech-skills, .projects, .experience, .education{

@@ -19,7 +19,8 @@
   .Template1 h4 {
     margin: 0; }
   .Template1 .summary, .Template1 .tech-skills, .Template1 .projects, .Template1 .experience, .Template1 .education {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    color: black; }
   .Template1 .experience span {
     font-weight: lighter;
     display: block;
@@ -91,9 +92,14 @@
   .Template4 .name {
     margin-bottom: 0; }
   .Template4 h3 {
+    font-family: 'Montserrat', sans-serif;
     margin: 15px 0 0 0; }
-  .Template4 h4 {
-    margin: 0; }
+  .Template4 h4, .Template4 h5, .Template4 h2 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif; }
+  .Template4 h5 span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter; }
   .Template4 .summary, .Template4 .tech-skills, .Template4 .projects, .Template4 .experience, .Template4 .education {
     margin-bottom: 20px; }
   .Template4 .experience span {

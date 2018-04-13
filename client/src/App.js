@@ -76,10 +76,10 @@ class App extends Component {
             <Route path="/resume" component={Aresume} />
 
             <Route path="/templates/newresume" component={NewResume} />
-            <Route path="/templates/template4" component={Template4} />  
-            <Route path="/templates/template3" component={Template3} />  
-            <Route path="/templates/template2" component={Template2} />             
-            <Route path="/templates/template1" component={Template1} />
+            <Route path="/template4" component={Template4} />  
+            <Route path="/template3" component={Template3} />  
+            <Route path="/template2" component={Template2} />             
+            <Route path="/template1" component={Template1} />
             {/* <Route path="/templates" component={Templates} />   */}
             
             <Route path="/" component={Home} />

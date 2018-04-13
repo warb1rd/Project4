@@ -22,7 +22,6 @@ import Template3 from './Template3.js';
 import Template4 from './Template4.js';
 
 import httpClient from '../../httpClient.js';
-// import Date from '../DatePicker.js'
 
 const templateOptions = [
     {text:'Minimal', value: "Template1"},

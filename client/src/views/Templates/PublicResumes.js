@@ -7,7 +7,7 @@ import httpClient from '../../httpClient.js';
 
 class Templates extends Component {
     state = {
-        // templates: [Template1, Template2, Template3, Template4]  ,               //Maybe create images for all of the templates and display as image?
+        // templateName: [Template1, Template2, Template3, Template4]  ,               //Maybe create images for all of the templates and display as image?
         resumes: [],
         makePublic: null
     }
@@ -18,7 +18,6 @@ class Templates extends Component {
             this.setState({
                 resumes: serverResponse.data,
                 makePublic: serverResponse.data[0].makePublic
-                
             })
         })
     }

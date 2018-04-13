@@ -36,11 +36,6 @@ i.big.icon, i.big.icons{
   color: #f0c311;
 }
 
-/* .Modal {                                                         Semantic UI modal position fix */ */
-  /* display: flex !important; */
-  /* display: -ms-flexbox !important; */
-/* } */
-
 .Form-container{
   width: 40%;
   border: 1px solid grey;
@@ -52,15 +47,24 @@ i.big.icon, i.big.icons{
 .NavBar span{
   display: flex;
   background-color: #222629;
-  overflow: hidden;
-  
+  overflow: hidden;  
 }
 
 #template, #newResume, #print, #profile, #logout, #login, #signUp, #home {
   /* background-color: red;  */
   padding: 0 65px 0 65px;
   background-color: #222629;
-  /* color: yellowgreen; */
+  color: #f0c311;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ui.menu.item{
+  color: #f0c311
+}
+
+h4, h2, h3 span{
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
 }
 div .ui.card{
   margin: 50px auto;
