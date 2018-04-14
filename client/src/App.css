@@ -56,9 +56,9 @@ i.big.icon, i.big.icons{
   color: #dddddd !important;
   font-family: 'Montserrat', sans-serif;
 }
-#template , #newResume , #print, #profile , #logout , #login , #signUp , #home {
-
-  padding: 0 65px 0 65px;
+#template , #newResume , #print, #profile , #logout , #login , #signUp , #home, #map, .Home {
+  font-family: 'Montserrat', sans-serif !important;
+  padding: 0 42px 0 42px;
   color: #dddddd !important;
   
 }
@@ -117,6 +117,10 @@ div .ui.card{
   margin: 10px auto !important;
   background-color: #ffe400 !important;
   padding: 15px !important;
+}
+
+.prints{
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 /* @media print {

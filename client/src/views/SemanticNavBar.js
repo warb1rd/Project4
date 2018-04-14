@@ -43,6 +43,11 @@ class NavigationBar extends Component {
                         <Icon name='print' />
                     </Menu.Item>
 
+                    <Menu.Item name='prints' id="map">
+                        <Link to="/map">PRINTS ON MAP</Link>
+                        <Icon name='map outline' />
+                    </Menu.Item>
+
                     <Menu.Item name='profile' id="profile">
                         <Link to="/profile">PROFILE </Link>
                         <Icon name='user' />
@@ -51,6 +56,7 @@ class NavigationBar extends Component {
                         <Link to="/logout">LOGOUT </Link>
                         <Icon name='log out' />
                     </Menu.Item>
+
                 </span>
                 )
                 :(<span>

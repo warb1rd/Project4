@@ -3,15 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 
 import './stylesheets/templates.css'
 import 'semantic-ui-css/semantic.min.css';
-import httpClient from './httpClient';
 import './App.css';
+import httpClient from './httpClient';
 import NavigationBar from './views/SemanticNavBar.js';
-import SignUp from './views/User/SignUp';
-// import ModalSignUp from './views/ModalSignUp';
-import LogIn from './views/User/LogIn'
-// import ModalLogIn from './views/ModalLogIn'
 
+import SignUp from './views/User/SignUp';
+import LogIn from './views/User/LogIn'
 import LogOut from './views/User/LogOut'
+
 import Home from './views/Home';
 import Profile from './views/User/Profile.js'
 import EditResume from './views/Templates/editResume.js'
@@ -22,7 +21,9 @@ import Template1 from './views/Templates/Template1.js'
 import Template2 from './views/Templates/Template2.js'
 import Template3 from './views/Templates/Template3.js'
 import Template4 from './views/Templates/Template4.js'
+import PrintingShops from './views/Templates/NearbyPrinters.js';
 import Redirect from 'react-router-dom/Redirect';
+
 
 class App extends Component {
   state = { 
@@ -73,6 +74,9 @@ class App extends Component {
               ? <EditResume currentUser={currentUser} {...routeProps} />
               : <Redirect to="/login"/>
             }} />
+
+            <Route path="/map" component={PrintingShops} />
+            
             <Route path="/resumes" component={PublicResumes} />
             
             <Route path="/resume/:id" component={Aresume} />
