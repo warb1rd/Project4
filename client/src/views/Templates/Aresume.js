@@ -14,7 +14,6 @@ class Aresume extends Component {
     componentDidMount(){
         const resumeId = this.props.match.params.id
         httpClient.getResume(resumeId).then((apiResponse) => {
-            console.log(apiResponse.data)
             this.setState({
                 content:apiResponse.data, 
                 templateName: apiResponse.data.templateName
@@ -33,9 +32,6 @@ class Aresume extends Component {
     console.log(content)
     return(
         <div>
-            <p>HELLO</p>
-            <p>Dynamically render the resume depending on what template the user picked</p>
-            <p>Ask Philippe what the below syntax does</p>
             {content && ({
                 Minimal: <Template1 content={content}  />,
                 Lines: <Template2 content={content} />,
