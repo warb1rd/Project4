@@ -1,21 +1,6 @@
 import React, {Component} from 'react';
 import { Form , Checkbox, Dropdown, Button } from 'semantic-ui-react';
 
-// import Summary from './Summary.js';
-// import Technical from './Technical.js';
-// import Projects from './Projects.js';
-// import Description from './Description.js';
-// import Experience from './Experience.js';
-// import Company from './Company.js';
-// import JobTitle from './JobTitle.js'
-// import Details from './Details.js';
-// import StartDate from './StartDate.js';
-// import EndDate from './EndDate.js';
-// import Education from './Education.js';
-// import Institution from './Institution.js';
-// import Degree from './Degree.js';
-// import GraduationDate from './GraduationDate.js';
-
 import Template1 from './Template1.js';
 import Template2 from './Template2.js';
 import Template3 from './Template3.js';
@@ -32,48 +17,19 @@ const templateOptions = [
 
 class EditResume extends Component {
     state = {
-        resumeData: httpClient.getResume(this.props.match.params.id)
+        resumeData: null
     }
-//NOT HAVE COMPONENT DID MOUNT?? GET INITIAL VALUE ON STATE FROM HTTP CLIENT?? 
-    // componentDidMount(){
-    //     httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
-    //         console.log(apiResponse.data.resumeData)
 
-    //         const {header,experience, projects, education, summary, technical, templateName} = apiResponse.data
-    //         this.setState({
-    //             resumeData: {
-    //                 header: {
-    //                     name: this.refs.name.value,
-    //                     email: this.refs.email.value,
-    //                     phone: this.refs.phone.value
-    //                 },
-    //                 summary: this.refs.summary.value, 
-    //                 technical: this.refs.technical.value,
-    //                 projects: [{
-    //                     title: this.refs.title.value,
-    //                     description: this.refs.description.value,
-    //                 }],
-    //                 experience: [{
-    //                     company: this.refs.company.value,
-    //                     jobTitle: this.refs.jobTitle.value,
-    //                     startDate: this.refs.startDate.value, 
-    //                     endDate: this.refs.endDate.value,
-    //                     details: this.refs.details.value,
-    //                 }],
-    //                 education: [{
-    //                     institution: this.refs.institution.value,
-    //                     degree: this.refs.degree.value,
-    //                     graduationDate: this.refs.graduationDate.value,
-    //                 }],
-    //                 makePublic: true,
-    //                 // templateName: 
-    //             }
-    //         })
-    //     })
-    // }
+    componentDidMount(){
+        httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
+            console.log(apiResponse.data)
+            this.setState({
+                resumeData: apiResponse.data
+            })
+        })
+    }
 
     handleChange(event) {
-
 		this.setState({
             ...this.state.resumeData,
             [event.target.name]: event.target.value,
@@ -102,7 +58,6 @@ class EditResume extends Component {
                     graduationDate: this.refs.graduationDate.value,
                 }],
                 makePublic: !this.state.resumeData.makePublic,
-                templateName: event.target.textContent
             }
 		})
     }
@@ -114,42 +69,12 @@ class EditResume extends Component {
                 templateName: event.target.textContent
             }
         })
-        console.log(event.target.textContent)
     }
 
     handleFormSubmit(evt) {
         evt.preventDefault()
-        // const {name, email, phone, summary, technical, title, description, company, 
-        //     jobTitle, startDate, endDate, details, institution, degree, graduationDate, makePublic} = this.state
-        // const dataToSend = {
-        //     header: {
-        //         name: name,
-        //         email: email,
-        //         phone: phone
-        //     },
-        //     summary: summary, 
-        //     technical: technical,
-        //     projects: [{
-        //         title: title,
-        //         description: description,
-        //     }],
-        //     experience: [{
-        //         company: company,
-        //         jobTitle: jobTitle,
-        //         startDate: startDate, 
-        //         endDate: endDate,
-        //         details: details,
-        //     }],
-        //     education: [{
-        //         institution: institution,
-        //         degree: degree,
-        //         graduationDate: graduationDate,
-        //     }],
-        //     makePublic: makePublic
-        // }
         httpClient.updateResume(this.props.match.params.id, this.state.resumeData).then((apiResponse) => {
             this.props.history.push("/profile")
-            console.log(apiResponse)
         })
     }
 
@@ -160,8 +85,9 @@ class EditResume extends Component {
         {text:"Cool", value: "Template3"},
         {text:"Rad", value: "Template4"}
     ]
-        const {name, email, phone, summary, technical, title, description, company, 
-            jobTitle, startDate, endDate, details, institution, degree, graduationDate} = this.state.resumeData
+        const { resumeData } = this.state
+        console.log(resumeData)
+        if(!resumeData) return <h1>Loading...</h1>
         return (
             <div>
             <Form onChange={this.handleChange.bind(this)} onSubmit={this.handleFormSubmit.bind(this)} className="Form-container">                
@@ -169,79 +95,79 @@ class EditResume extends Component {
                     <Dropdown onChange={this.handleDropDownClick.bind(this)} name='templateOptions' placeholder='TEMPLATES' fluid search selection options={templateOptions} />
                         <div className="field">
                             <label>NAME</label>
-                            <input ref="name" label='Name' name='name'  type='text' value={name} />
+                            <input ref="name" label='Name' name='name'  type='text' defaultValue={resumeData.header.name} />
                         </div>
                         <div className="field">
                             <label>EMAIL</label>
-                            <input ref="email" label='Email' name='email'  type='text' />
+                            <input ref="email" label='Email' name='email'  type='text'  defaultValue={resumeData.header.email}/>
                         </div>
                         <div className="field">
                             <label>PHONE</label>
-                            <input ref="phone" label='Phone' name='phone'  type='text' />
+                            <input ref="phone" label='Phone' name='phone'  type='text'  defaultValue={resumeData.header.phone}/>
                         </div>
                 </Form.Group>
                 
                 <Form.Group>
                     <div className="field">
                         <label>SUMMARY</label>
-                        <input ref="summary" label='Summary' name='summary'  type='text' />
+                        <input ref="summary" label='Summary' name='summary'  type='text'  defaultValue={resumeData.summary}/>
                     </div>   
                 </Form.Group>
                 
                 <Form.Group>
                     <div className="field">
                         <label>TECHNICAL</label>
-                        <input ref="technical" label='Technical' name='technical'  type='text' />
+                        <input ref="technical" label='Technical' name='technical'  type='text'  defaultValue={resumeData.technical}/>
                     </div>
                 </Form.Group>
                     
                 <Form.Group widths='equal'>
                     <div className="field">
                         <label>PROJECT</label>
-                        <input ref="title" label='NAME' name='title'  placeholder="Project Title" type='text' />
+                        <input ref="title" label='NAME' name='title'  placeholder="Project Title" type='text'  defaultValue={resumeData.projects[0].title}/>
                     </div>
                     
                     <div className="field">
                         <label>.</label>
-                        <input ref="description" label='Description' name='description'  type='text' />
+                        <input ref="description" label='Description' name='description'  type='text'  defaultValue={resumeData.projects[0].description}/>
                     </div>                
                 </Form.Group>
 
                 <Form.Group widths='equal'>
                     <div className="field">
                         <label>EXPERIENCE</label> 
-                            <input ref="company" label='Company' name='company'  type='text' placeholder='Company' />
+                            <input ref="company" label='Company' name='company'  type='text' placeholder='Company'  defaultValue={resumeData.experience[0].company}/>
                     </div>
                     <div className="field">
                         <label>.</label>
-                        <input ref="jobTitle" label='Job Title' name='jobTitle'  type='text' placeholder='Job Title' />
+                        <input ref="jobTitle" label='Job Title' name='jobTitle'  type='text' placeholder='Job Title'  defaultValue={resumeData.experience[0].jobTitle}/>
                     </div>
                     <div className="field">
                         <label>.</label>
-                        <input ref="startDate" label='From' name='startDate'  type='date' placeholder='From'/>
+                        <input ref="startDate" label='From' name='startDate'  type='date' placeholder='From'  defaultValue={resumeData.experience[0].startDate}/>
                     </div>
                     <div className="field">
                         <label>.</label>
-                        <input ref="endDate" label='To' name='endDate'  type='date' placeholder='To'/>
+                        <input ref="endDate" label='To' name='endDate'  type='date' placeholder='To'  defaultValue={resumeData.experience[0].endDate}/>
                     </div>
                     <div className="field">
                         <label>.</label>
-                        <input ref="details" label='Details' name='details'  type='text' placeholder='Details'/>
+                        <input ref="details" label='Details' name='details'  type='text' placeholder='Details'  defaultValue={resumeData.experience[0].details}/>
                     </div>                  
                 </Form.Group>
                 
                 <Form.Group widths='equal'>
                     <div className="field">
                         <label>EDUCATION</label> 
-                        <input ref="institution" label='Institution' name='institution'  type='text' placeholder='Institution' />
+                        <input ref="institution" label='Institution' name='institution'  type='text' placeholder='Institution'  defaultValue={resumeData.education[0].institution}/>
                     </div>
                     <div className="field">
                         <label>.</label>
-                        <input ref="degree" label='Degree' name='degree'  type='text' placeholder='Degree' />
+                        <input ref="degree" label='Degree' name='degree'  type='text' placeholder='Degree'  defaultValue={resumeData.education[0].degree}/>
                     </div>
                     <div className="field">
                         <label>.</label>
-                        <input ref="graduationDate" label='Graduation date' name='graduationDate'  type='date' placeholder='Date'/>
+                        <input ref="graduationDate" label='Graduation date' name='graduationDate'  type='date' placeholder='Date' defaultValue={resumeData.education[0].graduationDate}/>
                     </div>
                 </Form.Group>
                 

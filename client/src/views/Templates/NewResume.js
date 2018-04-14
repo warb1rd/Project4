@@ -49,6 +49,7 @@ class NewResume extends Component {
     handleChange(event) {
 		this.setState({
             resumeData: {
+                ...this.state.resumeData,
                 header: {
                     name: this.refs.name.value,
                     email: this.refs.email.value,
@@ -72,8 +73,7 @@ class NewResume extends Component {
                     degree: this.refs.degree.value,
                     graduationDate: this.refs.graduationDate.value,
                 }],
-                makePublic: !this.state.makePublic,
-                templateName: event.target.textContent
+                makePublic: !this.state.makePublic
             }
         })
     }
@@ -85,20 +85,13 @@ class NewResume extends Component {
                 templateName: event.target.textContent
             }
         })
-        console.log(event.target.textContent)
     }
 
     handleFormSubmit(event) {
         event.preventDefault()
-        console.log(this.state.resumeData.templateName)
-        // const {makePublic, templateName} = this.state.resumeData
         httpClient.createResume(this.state.resumeData).then((apiResponse) => {
             this.props.history.push("/profile")
-            // this.setState({
-            //     resumeData:{
-            //         ...this.state.resumeData,
-            //     }
-            // })
+
         })
     }
 
