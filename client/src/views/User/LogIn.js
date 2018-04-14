@@ -36,10 +36,11 @@ class Login extends Component {
 			if(apiResponse) {
                 this.props.onLoginSuccess(apiResponse)
 				this.props.history.push('/profile')
-			} setTimeout(this.setState({
+            } 
+            this.setState({
                 errorMessage: "Something seems wrong, try again.",
                 padding: "30px"
-            }) , 5000)
+            })
 		})
 	}
 

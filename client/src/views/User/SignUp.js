@@ -37,9 +37,10 @@ class SignUp extends Component {
                 console.log(this.props)
                 this.props.onSignUpSuccess(user)
 				this.props.history.push('/')
-			}setTimeout(this.setState({
+            }
+            this.setState({
                 errorMessage: "Something seems wrong. Did you mean to Login?",
-            }) , 5000)
+            })
 		})
 	}
 
