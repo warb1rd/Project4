@@ -22,7 +22,6 @@ class EditResume extends Component {
 
     componentDidMount(){
         httpClient.getResume(this.props.match.params.id).then((apiResponse)=>{
-            console.log(apiResponse.data)
             this.setState({
                 resumeData: apiResponse.data
             })

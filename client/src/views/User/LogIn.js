@@ -61,7 +61,7 @@ class Login extends Component {
                 )
             })} */}
 
-            <Form signup-form onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
+            <Form className="login-form" onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Group>               
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
                     <Form.Input type="password" placeholder='Password' name='password' value={password} />
