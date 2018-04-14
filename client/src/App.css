@@ -102,17 +102,22 @@ div .ui.card{
   padding: 20px;
 }
 
+.login-form{
+  width: 500px;
+  margin: 100px auto;
+  padding: 20px;
+}
 
 .ui.input{
   padding: 10px;
 }
-/* 
-.ui.button{
+
+.login-button, .signup-button{
   width: 410px;
-  margin: 10px auto;
-  background-color: gray;
-  padding: 13px;
-} */
+  margin: 10px auto !important;
+  background-color: #ffe400 !important;
+  padding: 15px !important;
+}
 
 /* @media print {
   .no-print {

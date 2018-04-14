@@ -55,7 +55,7 @@ class SignUp extends Component {
                     <Form.Input type="text" placeholder='Name' name='name' value={name} />
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
                     <Form.Input type="password" placeholder='Password' name='password' value={password} />
-                    <Button>Submit</Button>
+                    <Button className="signup-button">Submit</Button>
                 </Form.Group>
             </Form>
             </div>

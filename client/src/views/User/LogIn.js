@@ -65,7 +65,7 @@ class Login extends Component {
                 <Form.Group>               
                     <Form.Input type="text" placeholder='Email' name='email' value={email} />
                     <Form.Input type="password" placeholder='Password' name='password' value={password} />
-                    <Button type="submit">LOGIN</Button>
+                    <Button className="login-button" type="submit">LOGIN</Button>
                 </Form.Group>
             </Form>
            
