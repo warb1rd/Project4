@@ -30,9 +30,9 @@ class EditResume extends Component {
 
     handleChange(event) {
 		this.setState({
-            ...this.state.resumeData,
-            [event.target.name]: event.target.value,
+            // [event.target.name]: event.target.value,
             resumeData: {
+                ...this.state.resumeData,
                 header: {
                     name: this.refs.name.value,
                     email: this.refs.email.value,

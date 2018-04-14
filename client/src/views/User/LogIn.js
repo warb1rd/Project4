@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import httpClient from '../../httpClient.js'
-// import {Alert} from 'reactstrap';
 
 class Login extends Component {
     state = {
@@ -49,7 +48,6 @@ class Login extends Component {
 
         return (
             <div>
-                 {/* <Alert color="warning">{this.state.errorMessage}</Alert> */}
 
                 {this.state.errorMessage !== null && <p style={{backgroundColor:"lightcoral", borderRadius:"2px", padding:"{this.state.padding}"}}>{this.state.errorMessage}</p>}
 

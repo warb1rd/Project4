@@ -48,9 +48,8 @@ class NewResume extends Component {
 
     handleChange(event) {
 		this.setState({
-            ...this.state.resumeData,
-
             resumeData: {
+                ...this.state.resumeData,
                 header: {
                     name: this.refs.name.value,
                     email: this.refs.email.value,
