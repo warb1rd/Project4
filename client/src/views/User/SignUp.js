@@ -48,7 +48,7 @@ class SignUp extends Component {
 
         return (
             <div>
-            {this.state.errorMessage !== null && <p style={{backgroundColor:"lightcoral", borderRadius:"2px", padding:"{this.state.padding}"}}>{this.state.errorMessage}</p>}
+            {this.state.errorMessage !== null && <p style={{backgroundColor:"lightcoral", borderRadius:"2px"}}>{this.state.errorMessage}</p>}
 
             <Form className="signup-form" onChange={this.handleChange.bind(this)} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Group>

@@ -73,6 +73,7 @@ class NewResume extends Component {
                     graduationDate: this.refs.graduationDate.value,
                 }],
                 makePublic: !this.state.makePublic,
+                templateName: event.target.textContent
             }
         })
     }
@@ -89,7 +90,8 @@ class NewResume extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault()
-        const {makePublic, templateName} = this.state.resumeData
+        console.log(this.state.resumeData.templateName)
+        // const {makePublic, templateName} = this.state.resumeData
         httpClient.createResume(this.state.resumeData).then((apiResponse) => {
             this.props.history.push("/profile")
             // this.setState({
@@ -101,9 +103,7 @@ class NewResume extends Component {
     }
 
    render(){  
-        // const {name, email, phone, summary, technical, title, 
-        //     description, company, jobTitle, startDate, endDate, 
-        //     details, institution, degree, 
+      
         const {makePublic, templateName,} = this.state.resumeData
         return (
             <div>
@@ -172,12 +172,6 @@ class NewResume extends Component {
                             <input ref="details" label='Details' name='details'  type='text' placeholder='Details'/>
                         </div>
 
-
-                        {/* <Form.Field label='EXPERIENCE' placeholder='Company' name='company' control='input' rows='1' />
-                        <Form.Field label='.' placeholder='Job Title' name='jobTitle' control='input' rows='2' />
-                        <Form.Field label='From' placeholder='Date from' name='startDate' type='date' control='input'  rows='2' />
-                        <Form.Field label='To' placeholder='Date to' name='endDate' type='date' control='input' rows='2' />
-                        <Form.Field label='.' placeholder='Details' name='details' control='textarea' rows='2' />                   */}
                     </Form.Group>
                     
                     <Form.Group widths='equal'>
@@ -193,14 +187,8 @@ class NewResume extends Component {
                             <label>.</label>
                             <input ref="graduationDate" label='Graduation date' name='graduationDate'  type='date' placeholder='Date'/>
                         </div>
-{/*                 
-                        <Form.Field label='EDUCATION' placeholder='Institution' name='institution' control='input' rows='1' />
-                        <Form.Field label='.' placeholder='Degree' control='input' name='degree' rows='2' />
-                        <Form.Field label='.' placeholder='Date' control='input' type='date' name='graduationDate' rows='2' /> */}
-                    </Form.Group>
-                    
+                    </Form.Group>                    
                     <Button> SAVE RESUME </Button>
-
                     <Form.Group grouped>                   
                         <Form.Field>
                             <Checkbox label="Make your resume searchable." onChange={this.handleChange.bind(this)}/>
@@ -209,12 +197,11 @@ class NewResume extends Component {
                 </Form>          
                      
                 {({
-                    Minimal: <Template1 template={this.state.templateName} name={"billy"} content={this.state.resumeData}  />,
-                    Lines: <Template2 template={this.state.templateName} content={this.state.resumeData} />,
-                    Cool: <Template3 template={this.state.templateName} content={this.state.resumeData} />,
-                    Rad: <Template4 template={this.state.templateName} content={this.state.resumeData} />
-                })[this.state.resumeData.templateName]}
-                
+                    Minimal: <Template1 content={this.state.resumeData}  />,
+                    Lines: <Template2  content={this.state.resumeData} />,
+                    Cool: <Template3  content={this.state.resumeData} />,
+                    Rad: <Template4  content={this.state.resumeData} />
+                })[this.state.resumeData.templateName]}                
             </div>
         )
     }

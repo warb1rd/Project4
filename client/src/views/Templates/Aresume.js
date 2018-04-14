@@ -14,6 +14,7 @@ class Aresume extends Component {
     componentDidMount(){
         const resumeId = this.props.match.params.id
         httpClient.getResume(resumeId).then((apiResponse) => {
+            console.log(apiResponse.data)
             this.setState({
                 content:apiResponse.data, 
                 templateName: apiResponse.data.templateName
@@ -29,6 +30,7 @@ class Aresume extends Component {
         {text:"Cool", value: "Template3"},
         {text:"Rad", value: "Template4"}
     ]
+    console.log(content)
     return(
         <div>
             <p>HELLO</p>
