@@ -22,10 +22,8 @@ class SignUp extends Component {
 	}
 
     handleSubmit(evt) {
-        console.log("clicked")
 		evt.preventDefault()
 		httpClient.signUp(this.state.fields).then(user => {
-            console.log(user)
 			this.setState({ 
                 fields: { 
                     name: "", 
@@ -34,7 +32,6 @@ class SignUp extends Component {
                 } 
             })
 			if(user) {
-                console.log(this.props)
                 this.props.onSignUpSuccess(user)
 				this.props.history.push('/')
             }

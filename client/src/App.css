@@ -44,6 +44,7 @@ i.big.icon, i.big.icons{
   /* margin: 0 auto; */
 }
 
+
 .NavBar span{
   display: flex;
   background-color: #222629;
@@ -56,7 +57,7 @@ i.big.icon, i.big.icons{
   color: #dddddd !important;
   font-family: 'Montserrat', sans-serif;
 }
-#template , #newResume , #print, #profile , #logout , #login , #signUp , #home, #map, .Home {
+#template , #newResume , #print, #profile , #logout , #login , #signUp , #home, #map {
   font-family: 'Montserrat', sans-serif !important;
   padding: 0 42px 0 42px;
   color: #dddddd !important;
@@ -123,6 +124,29 @@ div .ui.card{
   font-family: 'Montserrat', sans-serif !important;
 }
 
+.Homepage p{
+  font-family: 'Montserrat', sans-serif !important;
+  width: 300px;
+  margin-top: 20px;
+  margin-bottom: 0;  
+  margin-left: auto;
+  margin-right: auto;
+  
+  font-size: 35px;
+  padding-left: 50px;  
+}
+.Homepage h5{
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid grey; 
+}
+
+.Homepage img{
+  display: block;
+  margin: 50px auto;
+  opacity: .75;
+  
+}
 /* @media print {
   .no-print {
     display: none;

@@ -22,10 +22,8 @@ class Login extends Component {
 	}
 
     handleSubmit(evt) {
-        console.log("clicked")
 		evt.preventDefault()
 		httpClient.logIn(this.state.fields).then(apiResponse => {
-            console.log(apiResponse)
 			this.setState({ 
                 fields: { 
                     email: "", 
