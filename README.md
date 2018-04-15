@@ -2,7 +2,7 @@
 
 This project is a single page app that integrates the nodeJS (for backend using mongoDbB) and React frameworks. 
 
-![](https://i.imgur.com/TjDyXBG.png)
+![](https://i.imgur.com/e6J7q69.png)
 ---
 ### Project Summary
 ---
