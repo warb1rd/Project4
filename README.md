@@ -1,4 +1,4 @@
-## PROJECT 3 - Rézoome
+## PROJECT 4 - Rézoome
 
 This project is a single page app that integrates the nodeJS (for backend using mongoDbB) and React frameworks. 
 
@@ -105,4 +105,4 @@ Users should be able to
 * Dynamically change the template in the public resume index view. 
 * Implement an API for google maps for users to see nearest printing shops.
 * Add more templates that are most popular and see which templates get people hired most.
-* Pick fonts and move around the title fields.
+* Pick fonts and drag around the title fields.

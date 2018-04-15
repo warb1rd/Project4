@@ -142,10 +142,11 @@ div .ui.card{
 }
 
 .Homepage img{
+  width: 1275px;
   display: block;
-  margin: 50px auto;
+  margin: 0 auto;
   opacity: .75;
-  
+
 }
 /* @media print {
   .no-print {
