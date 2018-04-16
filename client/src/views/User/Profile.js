@@ -70,6 +70,12 @@ class Profile extends Component {
         })
     }
 
+    closeModal() {
+        this.setState({
+            modalOpen: false
+        })
+    }
+
     render(){
         const {fields, modalOpen, resumes} = this.state
         return(
@@ -80,7 +86,7 @@ class Profile extends Component {
                         header={fields.name}
                         meta={fields.email}
                         extra=
-                        {<Modal closeOnDocumentClick={true} open={modalOpen} className="ModalProfile" trigger=
+                        {<Modal onClose={this.closeModal.bind(this)} open={modalOpen} className="ModalProfile" trigger=
                             {<Button onClick=
                                 {this.handleEditClick.bind(this)}>EDIT</Button>
                             }>
