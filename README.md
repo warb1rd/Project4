@@ -1,9 +1,10 @@
 ## PROJECT 4 - Rézoome
 
 This project is a single page app that integrates the nodeJS (for backend using mongoDbB) and React frameworks. 
+[Check it out!](https://rezoome.herokuapp.com/)
 
-![](https://i.imgur.com/e6J7q69.png)
----
+![](https://i.imgur.com/IBH5M6s.png)
+
 ### Project Summary
 ---
 Rézoome is an app that allows you to streamline your résumés in a pre-designed template of your choosing without having to format a document yourself.
@@ -80,14 +81,7 @@ I used the app architecture and errors to guide me through to create the entire 
 
 I created wireframes on old-fashioned flash-cards and iterated through it, which helped with the design. 
 
-![ERD]()
-
-![Wireframes]()
-![Wireframes]()
-
-![Wireframes]()
-![Wireframes]()
-
+![Wireframes](https://i.imgur.com/MU7TcXQ.jpg)
 
 ---
 ### User experience
