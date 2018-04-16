@@ -138,7 +138,7 @@ class NewResume extends Component {
                         
                         <div className="field">
                             <label>.</label>
-                            <input ref="description" label='Description' name='description'  type='text' />
+                            <input ref="description" label='Description' name='description' placeholder="Description"  type='text' />
                         </div>
                     </Form.Group>
 
