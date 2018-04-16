@@ -124,7 +124,7 @@ div .ui.card{
   font-family: 'Montserrat', sans-serif !important;
 }
 
-.Homepage p{
+/* .Homepage p{
   font-family: 'Montserrat', sans-serif !important;
   width: 300px;
   margin-top: 20px;
@@ -134,15 +134,17 @@ div .ui.card{
   
   font-size: 35px;
   padding-left: 50px;  
-}
+} */
+/* 
 .Homepage h5{
   margin: 0;
   padding: 0;
   border-bottom: 1px solid grey; 
-}
+} */
 
 .Homepage img{
-  width: 1275px;
+  width: 1272px;
+  height: 800px;
   display: block;
   margin: 0 auto;
   opacity: .75;
