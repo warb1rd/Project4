@@ -1,4 +1,4 @@
-## PROJECT 4 - Rézoome
+## PROJECT 4 - Rézoomé
 
 This project is a single page app that integrates the nodeJS (for backend using mongoDbB) and React frameworks. 
 [Check it out!](https://rezoome.herokuapp.com/)
