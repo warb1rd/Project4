@@ -29,9 +29,8 @@ class Aresume extends Component {
         {text:"Cool", value: "Template3"},
         {text:"Rad", value: "Template4"}
     ]
-    console.log(content)
     return(
-        <div>
+        <div className="ShowResume">
             {content && ({
                 Minimal: <Template1 content={content}  />,
                 Lines: <Template2 content={content} />,

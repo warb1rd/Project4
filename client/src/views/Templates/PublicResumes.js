@@ -4,7 +4,6 @@ import httpClient from '../../httpClient.js';
 
 class Templates extends Component {
     state = {
-        // templateName: [Template1, Template2, Template3, Template4]  ,               //Maybe create images for all of the templates and display as image?
         resumes: [],
         makePublic: null
     }
@@ -13,7 +12,8 @@ class Templates extends Component {
         httpClient.getAllResumes().then((apiResponse) => {
             this.setState({
                 resumes: apiResponse.data,
-                makePublic: apiResponse.data[0].makePublic
+                makePublic: apiResponse.data[0].makePublic,
+                templateName: apiResponse.data[0].templateName
             })
         })
     }

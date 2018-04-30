@@ -42,7 +42,7 @@ class NewResume extends Component {
                 graduationDate: '',
             }],
             makePublic: false,
-            templateName: 'Minimal'
+            templateName: ''
         }     
     }
 
